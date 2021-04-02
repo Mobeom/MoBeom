@@ -3,6 +3,7 @@ package com.mobeom.mobeom;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +16,8 @@ public class MainActivity extends AppCompatActivity {
     Button bt_maskDetector;
     Button bt_autoDiagnosis;
     Button bt_exit;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         bt_maskDetector = findViewById(R.id.bt_maskDetector);
         bt_autoDiagnosis = findViewById(R.id.bt_autoDiagnosis);
         bt_exit = findViewById(R.id.bt_exit);
+
 
         bt_manual.setOnClickListener(new View.OnClickListener() {
             @Override
