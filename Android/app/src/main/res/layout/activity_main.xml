@@ -14,7 +14,7 @@
         android:layout_marginBottom="90dp"
         android:text="모범 시민"
         android:textSize="50dp"
-        android:textColor="#278C02"
+        android:textColor="@color/green"
         app:layout_constraintBottom_toTopOf="@+id/bt_manual"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
