@@ -19,7 +19,7 @@ public class ManualActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_manual);
+        setContentView(R.layout.activity_manual_const);
 
         tv_manual_title = findViewById(R.id.tv_manual_title);
         bt_manual_maskDetector = findViewById(R.id.bt_manual_maskDetector);
@@ -27,13 +27,5 @@ public class ManualActivity extends AppCompatActivity {
         bt_manual_finder = findViewById(R.id.bt_manual_finder);
         bt_return = findViewById(R.id.bt_return);
 
-        bt_return.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ManualActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
     }
 }
