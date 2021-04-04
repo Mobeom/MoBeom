@@ -40,3 +40,5 @@ $ git push origin [자신의 브랜치]
 * pull request (pr) 보내기
 본인의 브랜치에 push했다면 github 페이지에서 자신의 branch에 들어갔을 시에 상단에 초록색 pull request 박스가 보일 것이다. 그러면 그것을 클릭하고 message 만들어서 git pull request하면 된다. 그리고 팀원들에게 merge할 것을 얘기하고 merge를 진행하면 된다. 현재 자신이 맡은 일이 마무리가 되었다고 판단되면 merge 시에 기존 브랜치를 삭제한다.
 ※[pull request message 튜토리얼]( https://www.pullrequest.com/blog/writing-a-great-pull-request-description/ )
+
+* test
