@@ -1,0 +1,17 @@
+*.iml
+.gradle
+/local.properties
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+
+/.gradle/
+/.idea/
+
+app/src/main/assets/mobilenet_v1_1.0_224_info.txt
+app/src/main/assets/mobilenet_v1_1.0_224_quant_info.txt
+
