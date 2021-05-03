@@ -1,4 +1,4 @@
-package org.tensorflow.lite.examples.classification;
+package org.tensorflow.lite.examples.classification.Presentation;
 
 /*
  * Copyright 2019 The TensorFlow Authors. All Rights Reserved.
@@ -33,9 +33,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import java.io.IOException;
 import java.util.List;
-import org.tensorflow.lite.examples.classification.customview.AutoFitTextureView;
-import org.tensorflow.lite.examples.classification.env.ImageUtils;
-import org.tensorflow.lite.examples.classification.env.Logger;
+import org.tensorflow.lite.examples.classification.Presentation.customview.AutoFitTextureView;
+import org.tensorflow.lite.examples.classification.Presentation.env.ImageUtils;
+import org.tensorflow.lite.examples.classification.Presentation.env.Logger;
+import org.tensorflow.lite.examples.classification.R;
 
 public class LegacyCameraConnectionFragment extends Fragment {
   private static final Logger LOGGER = new Logger();

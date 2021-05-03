@@ -13,11 +13,11 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-package org.tensorflow.lite.examples.classification.tflite;
+package org.tensorflow.lite.examples.classification.Presentation.tflite;
 
 import android.app.Activity;
 import java.io.IOException;
-import org.tensorflow.lite.examples.classification.tflite.Classifier.Device;
+
 import org.tensorflow.lite.support.common.TensorOperator;
 import org.tensorflow.lite.support.common.ops.NormalizeOp;
 

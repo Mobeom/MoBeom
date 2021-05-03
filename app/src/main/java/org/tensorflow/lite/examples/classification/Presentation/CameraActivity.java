@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.tensorflow.lite.examples.classification;
+package org.tensorflow.lite.examples.classification.Presentation;
 
 import android.Manifest;
 import android.app.Fragment;
@@ -35,14 +35,13 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Trace;
-import androidx.annotation.NonNull;
+
 import androidx.annotation.UiThread;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+
 import android.util.Size;
 import android.view.Surface;
 import android.view.View;
-import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -50,16 +49,16 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.google.android.material.bottomsheet.BottomSheetBehavior;
+
 import java.nio.ByteBuffer;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
-import org.tensorflow.lite.examples.classification.env.ImageUtils;
-import org.tensorflow.lite.examples.classification.env.Logger;
-import org.tensorflow.lite.examples.classification.tflite.Classifier.Device;
-import org.tensorflow.lite.examples.classification.tflite.Classifier.Model;
-import org.tensorflow.lite.examples.classification.tflite.Classifier.Recognition;
+import org.tensorflow.lite.examples.classification.Presentation.env.ImageUtils;
+import org.tensorflow.lite.examples.classification.Presentation.env.Logger;
+import org.tensorflow.lite.examples.classification.Presentation.tflite.Classifier.Device;
+import org.tensorflow.lite.examples.classification.Presentation.tflite.Classifier.Model;
+import org.tensorflow.lite.examples.classification.Presentation.tflite.Classifier.Recognition;
+import org.tensorflow.lite.examples.classification.R;
 
 public abstract class CameraActivity extends AppCompatActivity
     implements OnImageAvailableListener,

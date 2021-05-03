@@ -2,11 +2,15 @@ package org.tensorflow.lite.examples.classification;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import org.tensorflow.lite.examples.classification.Data.API.CoronaAPI;
+import org.tensorflow.lite.examples.classification.Presentation.ClassifierActivity;
+
+import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,6 +24,17 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), ClassifierActivity.class);
             startActivity(intent);
         });
+
+
+
+        new Thread(() -> {
+            CoronaAPI coronaAPI = new CoronaAPI();
+            try{
+                CoronaAPI.getStatus();
+            }catch (IOException e){
+                System.out.println(e.toString());
+            }
+        }).start();
 
     }
 }
