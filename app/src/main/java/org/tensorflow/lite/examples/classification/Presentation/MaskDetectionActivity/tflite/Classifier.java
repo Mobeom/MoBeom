@@ -13,7 +13,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-package org.tensorflow.lite.examples.classification.tflite;
+package org.tensorflow.lite.examples.classification.Presentation.MaskDetectionActivity.tflite;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
@@ -29,8 +29,7 @@ import java.util.Map;
 import java.util.PriorityQueue;
 import org.tensorflow.lite.DataType;
 import org.tensorflow.lite.Interpreter;
-import org.tensorflow.lite.examples.classification.env.Logger;
-import org.tensorflow.lite.examples.classification.tflite.Classifier.Device;
+import org.tensorflow.lite.examples.classification.Presentation.MaskDetectionActivity.env.Logger;
 import org.tensorflow.lite.gpu.GpuDelegate;
 import org.tensorflow.lite.nnapi.NnApiDelegate;
 import org.tensorflow.lite.support.common.FileUtil;

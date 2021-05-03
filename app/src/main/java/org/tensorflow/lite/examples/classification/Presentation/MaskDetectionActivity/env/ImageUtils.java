@@ -13,7 +13,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-package org.tensorflow.lite.examples.classification.env;
+package org.tensorflow.lite.examples.classification.Presentation.MaskDetectionActivity.env;
 
 import android.graphics.Bitmap;
 import android.os.Environment;

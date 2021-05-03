@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.tensorflow.lite.examples.classification;
+package org.tensorflow.lite.examples.classification.Presentation.MaskDetectionActivity;
 
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -27,11 +27,12 @@ import android.util.TypedValue;
 import android.widget.Toast;
 import java.io.IOException;
 import java.util.List;
-import org.tensorflow.lite.examples.classification.env.BorderedText;
-import org.tensorflow.lite.examples.classification.env.Logger;
-import org.tensorflow.lite.examples.classification.tflite.Classifier;
-import org.tensorflow.lite.examples.classification.tflite.Classifier.Device;
-import org.tensorflow.lite.examples.classification.tflite.Classifier.Model;
+import org.tensorflow.lite.examples.classification.Presentation.MaskDetectionActivity.env.BorderedText;
+import org.tensorflow.lite.examples.classification.Presentation.MaskDetectionActivity.env.Logger;
+import org.tensorflow.lite.examples.classification.Presentation.MaskDetectionActivity.tflite.Classifier;
+import org.tensorflow.lite.examples.classification.Presentation.MaskDetectionActivity.tflite.Classifier.Device;
+import org.tensorflow.lite.examples.classification.Presentation.MaskDetectionActivity.tflite.Classifier.Model;
+import org.tensorflow.lite.examples.classification.R;
 
 public class ClassifierActivity extends CameraActivity implements OnImageAvailableListener {
   private static final Logger LOGGER = new Logger();

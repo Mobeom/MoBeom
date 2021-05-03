@@ -3,6 +3,10 @@
     <color name="colorPrimary">#ffa800</color>
     <color name="colorPrimaryDark">#ff6f00</color>
     <color name="colorAccent">#425066</color>
-
     <color name="semi_transparent">#66000000</color>
+    <color name="pastel_white">#FCF6F5</color>
+    <color name="pastel_green">#2BAE66</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="red">#FF0000</color>
 </resources>
