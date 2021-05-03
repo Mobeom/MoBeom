@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import org.tensorflow.lite.examples.classification.Data.API.CoronaAPI;
+import org.tensorflow.lite.examples.classification.Presentation.CheckListActivity.CheckListActivity;
 import org.tensorflow.lite.examples.classification.Presentation.MaskDetectionActivity.ClassifierActivity;
 import org.tensorflow.lite.examples.classification.R;
 import org.tensorflow.lite.examples.classification.databinding.ActivityMainBinding;
@@ -29,6 +30,10 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        binding.buttonSelfCheck.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), CheckListActivity.class);
+            startActivity(intent);
+        });
 
 
         new Thread(() -> {
