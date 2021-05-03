@@ -1,4 +1,4 @@
-package org.tensorflow.lite.examples.classification.Presentation;
+package org.tensorflow.lite.examples.classification.Presentation.MaskDetectionActivity;
 
 /*
  * Copyright 2019 The TensorFlow Authors. All Rights Reserved.
@@ -33,9 +33,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import java.io.IOException;
 import java.util.List;
-import org.tensorflow.lite.examples.classification.Presentation.customview.AutoFitTextureView;
-import org.tensorflow.lite.examples.classification.Presentation.env.ImageUtils;
-import org.tensorflow.lite.examples.classification.Presentation.env.Logger;
+import org.tensorflow.lite.examples.classification.Presentation.MaskDetectionActivity.customview.AutoFitTextureView;
+import org.tensorflow.lite.examples.classification.Presentation.MaskDetectionActivity.env.ImageUtils;
+import org.tensorflow.lite.examples.classification.Presentation.MaskDetectionActivity.env.Logger;
 import org.tensorflow.lite.examples.classification.R;
 
 public class LegacyCameraConnectionFragment extends Fragment {

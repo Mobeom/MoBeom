@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.tensorflow.lite.examples.classification.Presentation;
+package org.tensorflow.lite.examples.classification.Presentation.MaskDetectionActivity;
 
 import android.Manifest;
 import android.app.Fragment;
@@ -53,11 +53,11 @@ import android.widget.Toast;
 import java.nio.ByteBuffer;
 import java.util.List;
 
-import org.tensorflow.lite.examples.classification.Presentation.env.ImageUtils;
-import org.tensorflow.lite.examples.classification.Presentation.env.Logger;
-import org.tensorflow.lite.examples.classification.Presentation.tflite.Classifier.Device;
-import org.tensorflow.lite.examples.classification.Presentation.tflite.Classifier.Model;
-import org.tensorflow.lite.examples.classification.Presentation.tflite.Classifier.Recognition;
+import org.tensorflow.lite.examples.classification.Presentation.MaskDetectionActivity.env.ImageUtils;
+import org.tensorflow.lite.examples.classification.Presentation.MaskDetectionActivity.env.Logger;
+import org.tensorflow.lite.examples.classification.Presentation.MaskDetectionActivity.tflite.Classifier.Device;
+import org.tensorflow.lite.examples.classification.Presentation.MaskDetectionActivity.tflite.Classifier.Model;
+import org.tensorflow.lite.examples.classification.Presentation.MaskDetectionActivity.tflite.Classifier.Recognition;
 import org.tensorflow.lite.examples.classification.R;
 
 public abstract class CameraActivity extends AppCompatActivity

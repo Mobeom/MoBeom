@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.tensorflow.lite.examples.classification.Presentation;
+package org.tensorflow.lite.examples.classification.Presentation.MaskDetectionActivity;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -59,8 +59,8 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
-import org.tensorflow.lite.examples.classification.Presentation.customview.AutoFitTextureView;
-import org.tensorflow.lite.examples.classification.Presentation.env.Logger;
+import org.tensorflow.lite.examples.classification.Presentation.MaskDetectionActivity.customview.AutoFitTextureView;
+import org.tensorflow.lite.examples.classification.Presentation.MaskDetectionActivity.env.Logger;
 import org.tensorflow.lite.examples.classification.R;
 
 public class CameraConnectionFragment extends Fragment {

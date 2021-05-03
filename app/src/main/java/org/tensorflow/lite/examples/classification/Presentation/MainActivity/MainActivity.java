@@ -1,15 +1,15 @@
-package org.tensorflow.lite.examples.classification;
+package org.tensorflow.lite.examples.classification.Presentation.MainActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import org.tensorflow.lite.examples.classification.Data.API.CoronaAPI;
-import org.tensorflow.lite.examples.classification.Presentation.ClassifierActivity;
+import org.tensorflow.lite.examples.classification.Presentation.MaskDetectionActivity.ClassifierActivity;
+import org.tensorflow.lite.examples.classification.R;
 import org.tensorflow.lite.examples.classification.databinding.ActivityMainBinding;
 
 import java.io.IOException;
@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         setContentView(binding.getRoot());
 
-        binding.button.setOnClickListener(view -> {
+        binding.buttonMaskDetector.setOnClickListener(view -> {
             Intent intent = new Intent(getApplicationContext(), ClassifierActivity.class);
             startActivity(intent);
         });

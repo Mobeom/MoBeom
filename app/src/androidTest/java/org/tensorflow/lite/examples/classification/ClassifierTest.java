@@ -35,11 +35,11 @@ import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.tensorflow.lite.examples.classification.Presentation.ClassifierActivity;
-import org.tensorflow.lite.examples.classification.Presentation.tflite.Classifier;
-import org.tensorflow.lite.examples.classification.Presentation.tflite.Classifier.Device;
-import org.tensorflow.lite.examples.classification.Presentation.tflite.Classifier.Model;
-import org.tensorflow.lite.examples.classification.Presentation.tflite.Classifier.Recognition;
+import org.tensorflow.lite.examples.classification.Presentation.MaskDetectionActivity.ClassifierActivity;
+import org.tensorflow.lite.examples.classification.Presentation.MaskDetectionActivity.tflite.Classifier;
+import org.tensorflow.lite.examples.classification.Presentation.MaskDetectionActivity.tflite.Classifier.Device;
+import org.tensorflow.lite.examples.classification.Presentation.MaskDetectionActivity.tflite.Classifier.Model;
+import org.tensorflow.lite.examples.classification.Presentation.MaskDetectionActivity.tflite.Classifier.Recognition;
 
 /** Golden test for Image Classification Reference app. */
 @RunWith(AndroidJUnit4.class)
