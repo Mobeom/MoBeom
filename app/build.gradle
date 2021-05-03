@@ -25,6 +25,9 @@ android {
     lintOptions {
         abortOnError false
     }
+    buildFeatures {
+        dataBinding true
+    }
 }
 
 // Download default models; if you wish to use your own models then

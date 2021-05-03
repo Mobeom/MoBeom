@@ -6,21 +6,25 @@ import android.widget.Button;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
 import org.tensorflow.lite.examples.classification.Data.API.CoronaAPI;
 import org.tensorflow.lite.examples.classification.Presentation.ClassifierActivity;
+import org.tensorflow.lite.examples.classification.databinding.ActivityMainBinding;
 
 import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
+    private ActivityMainBinding binding;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        setContentView(binding.getRoot());
 
-        Button button = findViewById(R.id.button);
-        button.setOnClickListener(view -> {
+        binding.button.setOnClickListener(view -> {
             Intent intent = new Intent(getApplicationContext(), ClassifierActivity.class);
             startActivity(intent);
         });
