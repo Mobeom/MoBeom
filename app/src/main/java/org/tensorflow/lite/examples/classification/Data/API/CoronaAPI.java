@@ -2,27 +2,16 @@ package org.tensorflow.lite.examples.classification.Data.API;
 
 import android.util.Log;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-
 
 public class CoronaAPI {
     public static void getStatus() throws IOException, XmlPullParserException {
@@ -59,19 +48,25 @@ public class CoronaAPI {
         xpp.next();
         StringBuffer buffer = new StringBuffer();
         int eventType = xpp.getEventType();
-        while(eventType!=XmlPullParser.END_DOCUMENT){
-            switch (eventType){
+        while (eventType != XmlPullParser.END_DOCUMENT) {
+            switch (eventType) {
                 case XmlPullParser.START_DOCUMENT:
                     buffer.append("파싱 시작 단계\n\n");
                     break;
 
                 case XmlPullParser.START_TAG:
                     tag = xpp.getName();
-                    if(tag.equals("item"));
-                    else if(tag.equals("careCnt")){
-                        buffer.append("치료수(careCnt) : ");
+                    if (tag.equals("item")) ;
+                    else if (tag.equals("deathCnt")) { // 일치하는 아이템명 확인
+                        buffer.append("사망자 수(deathCnt) : ");
                         xpp.next();
-                        buffer.append(xpp.getText());
+                        buffer.append(xpp.getText()); // 아이템의 값을 가져오는 부분
+                        buffer.append("\n");
+                    }
+                    else if (tag.equals("decideCnt")) { // 일치하는 아이템명 확인
+                        buffer.append("누적 확진자 수(decideCnt) : ");
+                        xpp.next();
+                        buffer.append(xpp.getText()); // 아이템의 값을 가져오는 부분
                         buffer.append("\n");
                     }
                     break;
@@ -80,8 +75,8 @@ public class CoronaAPI {
                     break;
 
                 case XmlPullParser.END_TAG:
-                    tag= xpp.getName(); // 태그 이름 얻어오기
-                    if(tag.equals("item")) buffer.append("\n"); // 첫번째 검색결과종료 후 줄바꿈
+                    tag = xpp.getName(); // 태그 이름 얻어오기
+                    if (tag.equals("item")) buffer.append("\n"); // 첫번째 검색결과종료 후 줄바꿈
                     break;
             }
             eventType = xpp.next();
@@ -103,16 +98,16 @@ public class CoronaAPI {
         xpp.next();
         StringBuffer buffer = new StringBuffer();
         int eventType = xpp.getEventType();
-        while(eventType!=XmlPullParser.END_DOCUMENT){
-            switch (eventType){
+        while (eventType != XmlPullParser.END_DOCUMENT) {
+            switch (eventType) {
                 case XmlPullParser.START_DOCUMENT:
                     buffer.append("파싱 시작 단계\n\n");
                     break;
 
                 case XmlPullParser.START_TAG:
                     tag = xpp.getName();
-                    if(tag.equals("item"));
-                    else if(tag.equals("careCnt")){
+                    if (tag.equals("item")) ;
+                    else if (tag.equals("careCnt")) {
                         buffer.append("치료수(careCnt) : ");
                         xpp.next();
                         buffer.append(xpp.getText());
@@ -124,8 +119,8 @@ public class CoronaAPI {
                     break;
 
                 case XmlPullParser.END_TAG:
-                    tag= xpp.getName(); // 태그 이름 얻어오기
-                    if(tag.equals("item")) buffer.append("\n"); // 첫번째 검색결과종료 후 줄바꿈
+                    tag = xpp.getName(); // 태그 이름 얻어오기
+                    if (tag.equals("item")) buffer.append("\n"); // 첫번째 검색결과종료 후 줄바꿈
                     break;
             }
             eventType = xpp.next();
