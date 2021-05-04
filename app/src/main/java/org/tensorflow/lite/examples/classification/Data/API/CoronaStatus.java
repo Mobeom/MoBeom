@@ -1,18 +1,14 @@
 package org.tensorflow.lite.examples.classification.Data.API;
 
 public class CoronaStatus {
-    private String date; // 어떤 날짜를 기준으로 가져왔는지.
     private String deathCnt; // 사망자 수
     private String decideCnt; // 누적 확진 수
+    private String clrCnt;
 
-    public CoronaStatus(String date, String deathCnt, String decideCnt) {
-        this.date = date;
+    public CoronaStatus(String deathCnt, String decideCnt, String clrCnt) {
         this.deathCnt = deathCnt;
         this.decideCnt = decideCnt;
-    }
-
-    public String getDate() {
-        return date;
+        this.clrCnt = clrCnt;
     }
 
     public String getDeathCnt() {
@@ -23,16 +19,20 @@ public class CoronaStatus {
         return decideCnt;
     }
 
-    public void setDate(String date){
-        this.date = date;
+    public String getClrCnt() {
+        return clrCnt;
     }
 
-    public void setDeathCnt(String deathCnt){
+    public void setDeathCnt(String deathCnt) {
         this.deathCnt = deathCnt;
     }
 
-    public void setDecideCnt(String decideCnt){
+    public void setDecideCnt(String decideCnt) {
         this.decideCnt = decideCnt;
+    }
+
+    public void setClrCnt(String clrCnt) {
+        this.clrCnt = clrCnt;
     }
 }
 
