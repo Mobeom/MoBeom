@@ -4,6 +4,8 @@
 
     <data>
 
+
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -28,18 +30,19 @@
                 android:id="@+id/tv_today_covid_status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="금일 확진자"
+                android:text="완치 환자"
                 android:textColor="@color/pastel_white"
                 android:textSize="18sp"
-                app:layout_constraintEnd_toStartOf="@id/tv_yesterday_covid_status"
+                app:layout_constraintEnd_toStartOf="@id/tv_decide_status"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/tv_clr_status_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="7명"
+                android:text="-"
                 android:textColor="@color/pastel_white"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -49,10 +52,10 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_today_covid_status" />
 
             <TextView
-                android:id="@+id/tv_yesterday_covid_status"
+                android:id="@+id/tv_decide_status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="어제 확진자"
+                android:text="확진 환자"
                 android:textColor="@color/pastel_white"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toStartOf="@id/tv_covid_death_status"
@@ -60,17 +63,18 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/tv_decide_status_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="713명"
+                android:text="-"
                 android:textColor="@color/pastel_white"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@id/tv_yesterday_covid_status"
-                app:layout_constraintStart_toStartOf="@id/tv_yesterday_covid_status"
-                app:layout_constraintTop_toBottomOf="@id/tv_yesterday_covid_status" />
+                app:layout_constraintEnd_toEndOf="@id/tv_decide_status"
+                app:layout_constraintStart_toStartOf="@id/tv_decide_status"
+                app:layout_constraintTop_toBottomOf="@id/tv_decide_status" />
 
 
             <TextView
@@ -81,14 +85,15 @@
                 android:textColor="@color/pastel_white"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/tv_yesterday_covid_status"
+                app:layout_constraintStart_toEndOf="@id/tv_decide_status"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/tv_death_cnt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="1417명"
+                android:text="-"
                 android:textColor="@color/red"
                 android:textSize="16sp"
                 android:textStyle="bold"
