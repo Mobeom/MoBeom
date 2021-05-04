@@ -22,5 +22,17 @@ public class CoronaStatus {
     public String getDecideCnt() {
         return decideCnt;
     }
+
+    public void setDate(String date){
+        this.date = date;
+    }
+
+    public void setDeathCnt(String deathCnt){
+        this.deathCnt = deathCnt;
+    }
+
+    public void setDecideCnt(String decideCnt){
+        this.decideCnt = decideCnt;
+    }
 }
 

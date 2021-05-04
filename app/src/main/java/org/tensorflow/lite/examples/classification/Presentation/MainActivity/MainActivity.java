@@ -1,5 +1,6 @@
 package org.tensorflow.lite.examples.classification.Presentation.MainActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -8,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import org.tensorflow.lite.examples.classification.Data.API.CoronaAPI;
+import org.tensorflow.lite.examples.classification.Data.API.CoronaStatus;
 import org.tensorflow.lite.examples.classification.Presentation.CheckListActivity.CheckListActivity;
 import org.tensorflow.lite.examples.classification.Presentation.MaskDetectionActivity.ClassifierActivity;
 import org.tensorflow.lite.examples.classification.R;
@@ -23,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +45,9 @@ public class MainActivity extends AppCompatActivity {
 
         new Thread(() -> {
             try{
-                CoronaAPI.getStatus();
+                CoronaStatus cs = CoronaAPI.getStatus();
+                System.out.println("이거 -> " + cs.getDeathCnt());
+                runOnUiThread(() -> binding.tvDeathCnt.setText(cs.getDeathCnt()+"명"));
             }catch (IOException e){
                 System.out.println(e.toString());
             } catch (XmlPullParserException e) {

@@ -85,10 +85,11 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/tv_death_cnt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="1417명"
+                android:text="-"
                 android:textColor="@color/red"
                 android:textSize="16sp"
                 android:textStyle="bold"
