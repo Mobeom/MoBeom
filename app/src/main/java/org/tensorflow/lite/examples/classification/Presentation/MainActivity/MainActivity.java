@@ -12,8 +12,12 @@ import org.tensorflow.lite.examples.classification.Presentation.CheckListActivit
 import org.tensorflow.lite.examples.classification.Presentation.MaskDetectionActivity.ClassifierActivity;
 import org.tensorflow.lite.examples.classification.R;
 import org.tensorflow.lite.examples.classification.databinding.ActivityMainBinding;
+import org.xml.sax.SAXException;
+import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
+
+import javax.xml.parsers.ParserConfigurationException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,11 +41,12 @@ public class MainActivity extends AppCompatActivity {
 
 
         new Thread(() -> {
-            CoronaAPI coronaAPI = new CoronaAPI();
             try{
                 CoronaAPI.getStatus();
             }catch (IOException e){
                 System.out.println(e.toString());
+            } catch (XmlPullParserException e) {
+                e.printStackTrace();
             }
         }).start();
 
