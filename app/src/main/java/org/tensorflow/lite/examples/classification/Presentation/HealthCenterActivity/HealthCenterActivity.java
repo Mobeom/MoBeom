@@ -22,16 +22,13 @@ import org.tensorflow.lite.examples.classification.databinding.ActivityCheckList
 
 public class HealthCenterActivity extends AppCompatActivity implements OnMapReadyCallback {
 
-    private FragmentManager fragmentManager;
-    private MapFragment mapFragment;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_health_center);
 
-        fragmentManager = getFragmentManager();
-        mapFragment = (MapFragment) fragmentManager.findFragmentById(R.id.googleMap);
+        FragmentManager fragmentManager = getFragmentManager();
+        MapFragment mapFragment = (MapFragment) fragmentManager.findFragmentById(R.id.googleMap);
         mapFragment.getMapAsync(this);
     }
 
@@ -43,8 +40,8 @@ public class HealthCenterActivity extends AppCompatActivity implements OnMapRead
         markerOptions.snippet("우리집 앞");     //세부 설명
         markerOptions.position(location);
         googleMap.addMarker(markerOptions);
-
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 16)); // 가까이 보고 싶으면 숫자를 올린다
+        //googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 16)); // 가까이 보고 싶으면 숫자를 올린다
+        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(location, 16)); // 가까이 보고 싶으면 숫자를 올린다
     }
 }
 
