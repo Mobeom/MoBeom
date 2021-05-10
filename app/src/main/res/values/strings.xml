@@ -22,4 +22,5 @@
         <item>GPU</item>
         <item>NNAPI</item>
     </string-array>
+    <string name ="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyDDzbal1llTxh_WqOD1hkxuI-RLcSl6aik</string>
 </resources>
