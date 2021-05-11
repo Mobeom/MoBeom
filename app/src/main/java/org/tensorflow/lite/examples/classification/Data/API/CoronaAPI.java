@@ -1,7 +1,9 @@
 package org.tensorflow.lite.examples.classification.Data.API;
 
+import android.content.Context;
 import android.util.Log;
 
+import org.tensorflow.lite.examples.classification.R;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
@@ -14,12 +16,12 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class CoronaAPI {
-    public static CoronaStatus getStatus(String startDate, String endDate) throws IOException, XmlPullParserException {
+    public static CoronaStatus getStatus(String startDate, String endDate, Context context) throws IOException, XmlPullParserException {
         // 인코딩된 Service Key <- 이거 사용
-        String serviceKeyEncoding = "tRFjOqedzciXi8AT49yZ0jh0cj6YO4Yg4Ej4wLcM%2BKa2joeVLhqTnfZRxuY0%2FYqUX4%2F5%2FIOUrjFPvZIyWjImeQ%3D%3D";
+        String serviceKeyEncoded = context.getString(R.string.corona_service_key_encoded);
         // 디코딩된 Service Key
-        String serviceKeyDecoding = "tRFjOqedzciXi8AT49yZ0jh0cj6YO4Yg4Ej4wLcM+Ka2joeVLhqTnfZRxuY0/YqUX4/5/IOUrjFPvZIyWjImeQ==";
-        String requestUrl = "http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19InfStateJson?serviceKey=" + serviceKeyEncoding + "&pageNo=1&numOfRows=10&startCreateDt=" + startDate + "&endCreateDt=" + endDate;
+        String serviceKeyDecoded = context.getString(R.string.corona_service_key_decoded);;
+        String requestUrl = "http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19InfStateJson?serviceKey=" + serviceKeyEncoded + "&pageNo=1&numOfRows=10&startCreateDt=" + startDate + "&endCreateDt=" + endDate;
         Log.e("URL", requestUrl);
         URL url = new URL(requestUrl);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
