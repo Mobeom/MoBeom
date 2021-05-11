@@ -2,11 +2,15 @@ package org.tensorflow.lite.examples.classification.Presentation.MainActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 
 import org.tensorflow.lite.examples.classification.Data.API.CoronaAPI;
@@ -50,7 +54,9 @@ public class MainActivity extends AppCompatActivity {
 
         binding.buttonHealthCenter.setOnClickListener(view -> {
             Intent intent = new Intent(getApplicationContext(), HealthCenterActivity.class);
-            startActivity(intent);
+            if (Build.VERSION.SDK_INT >= 23 && ContextCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(MainActivity.this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 0); }
+            else startActivity(intent);
         });
 
         new Thread(() -> {
