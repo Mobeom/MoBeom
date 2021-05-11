@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                 Date currentTime = Calendar.getInstance().getTime();
                 Date yesterdayTime = new Date(System.currentTimeMillis() - 24 * 60 * 60 * 1000L);
                 CustomDate cd = getDate(currentTime, yesterdayTime);
-                CoronaStatus cs = CoronaAPI.getStatus(cd.yesterdayDate, cd.todayDate);
+                CoronaStatus cs = CoronaAPI.getStatus(cd.yesterdayDate, cd.todayDate, getBaseContext());
                 System.out.println("이거 -> " + cs.getDeathCnt());
                 runOnUiThread(() -> {
                     binding.tvDeathCnt.setText(cs.getDeathCnt() + "명");
