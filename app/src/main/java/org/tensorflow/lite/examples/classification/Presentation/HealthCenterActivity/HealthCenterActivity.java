@@ -49,6 +49,16 @@ public class HealthCenterActivity extends AppCompatActivity implements OnMapRead
         ImageButton button_current_location = findViewById(R.id.button_current_location);
 
         lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
+        HealthCenterController controller = new HealthCenterController();
+        controller.start();
+
+        button_current_location.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(HealthCenterActivity.this, "text" + controller, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
     protected void GetCurrentLocation(){
         Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
