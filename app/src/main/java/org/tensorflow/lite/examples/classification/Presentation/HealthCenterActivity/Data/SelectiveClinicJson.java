@@ -1,35 +1,27 @@
 package org.tensorflow.lite.examples.classification.Presentation.HealthCenterActivity.Data;
 
 import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
 public class SelectiveClinicJson {
 
-    @Expose
-    private String name;
+    @SerializedName("name")
+    public String name;
 
-    @Expose
-    private String locate;
+    @SerializedName("locate")
+    public String locate;
 
-    @Expose
-    private String address;
+    @SerializedName("address")
+    public String address;
 
-    @Expose
-    private String phone;
+    @SerializedName("phone")
+    public String phone;
 
-    @Expose
-    private Double x;
+    @SerializedName("x")
+    public Double x;
 
-    @Expose
-    private Double y;
-
-    public SelectiveClinicJson(final String name, final String locate, final String address, final String phone, final Double x, final Double y){
-        this.name = name;
-        this.locate = locate;
-        this.address = address;
-        this.phone = phone;
-        this.x = x;
-        this.y = y;
-    }
+    @SerializedName("y")
+    public Double y;
 
     public double getX(){
         return x;
