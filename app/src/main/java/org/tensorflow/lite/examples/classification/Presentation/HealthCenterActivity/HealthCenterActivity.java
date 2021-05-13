@@ -28,38 +28,59 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import org.tensorflow.lite.examples.classification.Presentation.HealthCenterActivity.Data.SelectiveClinicJson;
 import org.tensorflow.lite.examples.classification.R;
 import org.tensorflow.lite.examples.classification.databinding.ActivityCheckListBinding;
 
 
-public class HealthCenterActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class HealthCenterActivity extends AppCompatActivity {
 
     private double longitude;
     private double latitude;
     private LocationManager lm;
+    private HealthCenterController controller;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_health_center);
 
-        //구글 지도 불러오기
         FragmentManager fragmentManager = getFragmentManager();
         MapFragment mapFragment = (MapFragment) fragmentManager.findFragmentById(R.id.googleMap);
-        mapFragment.getMapAsync(this);
-        ImageButton button_current_location = findViewById(R.id.button_current_location);
+
+        //retrofit
+        controller = new HealthCenterController();
+        controller.mapFragment = mapFragment;
+        controller.start();
 
         lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
-        HealthCenterController controller = new HealthCenterController();
-        controller.start();
+        //구글 지도 불러오기
+    }
+    protected void openMap(MapFragment mapFragment){
 
-        button_current_location.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(HealthCenterActivity.this, "text" + controller, Toast.LENGTH_SHORT).show();
+        mapFragment.getMapAsync(googleMap -> {
+            GetCurrentLocation();
+            LatLng location = new LatLng(latitude, longitude);
+
+            Log.e("clinic size", controller.resource.size()+" ");
+            for (SelectiveClinicJson clinic : controller.resource) {
+                LatLng lo = new LatLng(clinic.x, clinic.y);
+                MarkerOptions markerOptions = new MarkerOptions();
+                markerOptions.title(clinic.name);
+                markerOptions.snippet(clinic.address + clinic.phone);     //세부 설명
+                markerOptions.position(lo);
+                Log.e("TAG", "in for loop" + clinic.name);
+
+                googleMap.addMarker(markerOptions);
             }
+
+            //googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 16)); // 가까이 보고 싶으면 숫자를 올린다
+            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(location, 16)); // 가까이 보고 싶으면 숫자를 올린다
+
         });
     }
+
     protected void GetCurrentLocation(){
         Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         if(location != null){
@@ -78,7 +99,6 @@ public class HealthCenterActivity extends AppCompatActivity implements OnMapRead
         public void onLocationChanged(@NonNull Location location) {
             longitude = location.getLongitude();
             latitude = location.getLatitude();
-            Toast.makeText(HealthCenterActivity.this, "latitude:" + latitude + " longitude:" + longitude, Toast.LENGTH_SHORT).show();
         }
         @Override
         public void onStatusChanged(String provider, int status, Bundle extras) {
@@ -91,18 +111,5 @@ public class HealthCenterActivity extends AppCompatActivity implements OnMapRead
         }
     };
 
-
-    @Override
-    public void onMapReady(@NonNull GoogleMap googleMap) {
-        GetCurrentLocation();
-        LatLng location = new LatLng(latitude, longitude);
-        MarkerOptions markerOptions = new MarkerOptions();
-        markerOptions.title("우리집");
-        markerOptions.snippet("우리집 앞");     //세부 설명
-        markerOptions.position(location);
-        googleMap.addMarker(markerOptions);
-        //googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 16)); // 가까이 보고 싶으면 숫자를 올린다
-        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(location, 16)); // 가까이 보고 싶으면 숫자를 올린다
-    }
 }
 
