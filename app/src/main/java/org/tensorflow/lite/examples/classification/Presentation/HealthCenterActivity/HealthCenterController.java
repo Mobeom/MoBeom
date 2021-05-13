@@ -1,9 +1,11 @@
 package org.tensorflow.lite.examples.classification.Presentation.HealthCenterActivity;
 
 import android.os.Build;
+import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
+import com.google.android.gms.maps.MapFragment;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -22,6 +24,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class HealthCenterController implements Callback<List<SelectiveClinicJson>> {
 
     static final String BASE_URL = ConstantValue.Url.BASE_URL;
+    public List<SelectiveClinicJson> resource;
+    public MapFragment mapFragment;
 
     public void start() {
         Gson gson = new GsonBuilder()
@@ -33,19 +37,20 @@ public class HealthCenterController implements Callback<List<SelectiveClinicJson
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
+
         ApiService apiService = retrofit.create(ApiService.class);
 
         Call<List<SelectiveClinicJson>> call = apiService.getSelectiveClinics();
         call.enqueue(this);
-
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onResponse(Call<List<SelectiveClinicJson>> call, Response<List<SelectiveClinicJson>> response) {
         if(response.isSuccessful()) {
-            List<SelectiveClinicJson> changesList = response.body();
-            changesList.forEach(change -> System.out.println(change.getX()));
+            Log.e("TAG", response.code() + " ");
+            resource = response.body();
+            HealthCenterActivity hc = new HealthCenterActivity();
+            hc.openMap(mapFragment);
         } else {
             System.out.println(response.errorBody());
         }
@@ -53,6 +58,7 @@ public class HealthCenterController implements Callback<List<SelectiveClinicJson
 
     @Override
     public void onFailure(Call<List<SelectiveClinicJson>> call, Throwable t) {
+        call.cancel();
         t.printStackTrace();
     }
 }
