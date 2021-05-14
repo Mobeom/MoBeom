@@ -29,28 +29,13 @@ public class CheckListActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_check_list);
         setContentView(binding.getRoot());
 
-        final CheckBox s_cb1 = (CheckBox)findViewById(R.id.symptom1);
-        final CheckBox s_cb2 = (CheckBox)findViewById(R.id.symptom2);
-        final CheckBox s_cb3 = (CheckBox)findViewById(R.id.symptom3);
-        final CheckBox s_cb4 = (CheckBox)findViewById(R.id.symptom4);
-        final CheckBox s_cb5 = (CheckBox)findViewById(R.id.symptom5);
-        final CheckBox s_cb6 = (CheckBox)findViewById(R.id.symptom6);
-        final CheckBox c_cb1 = (CheckBox)findViewById(R.id.contact1);
-        final CheckBox c_cb2 = (CheckBox)findViewById(R.id.contact2);
-        final CheckBox c_cb3 = (CheckBox)findViewById(R.id.contact3);
-        final CheckBox c_cb4 = (CheckBox)findViewById(R.id.contact4);
-
-        Button go_back = (Button)findViewById(R.id.return_to_home);
-        Button result = (Button)findViewById(R.id.button_self_check);
-
-        go_back.setOnClickListener(new View.OnClickListener() {
+        binding.returnToHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
+                CheckListActivity.this.finish();
             }
         });
-        result.setOnClickListener(new View.OnClickListener() {
+        binding.buttonSelfCheck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder warning = new AlertDialog.Builder(CheckListActivity.this);
@@ -61,20 +46,19 @@ public class CheckListActivity extends AppCompatActivity {
                 warning.setNegativeButton("그정도는..", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                        startActivity(intent);
+                        CheckListActivity.this.finish();
                     }
                 });
-                if(s_cb1.isChecked() == true) warning.show();
-                else if(s_cb2.isChecked() == true) warning.show();
-                else if(s_cb3.isChecked() == true) warning.show();
-                else if(s_cb4.isChecked() == true) warning.show();
-                else if(s_cb5.isChecked() == true) warning.show();
-                else if(s_cb6.isChecked() == true) warning.show();
-                else if(c_cb1.isChecked() == true) warning.show();
-                else if(c_cb2.isChecked() == true) warning.show();
-                else if(c_cb3.isChecked() == true) warning.show();
-                else if(c_cb4.isChecked() == true) warning.show();
+                if(binding.symptom1.isChecked()) warning.show();
+                else if(binding.symptom2.isChecked()) warning.show();
+                else if(binding.symptom3.isChecked()) warning.show();
+                else if(binding.symptom4.isChecked()) warning.show();
+                else if(binding.symptom5.isChecked()) warning.show();
+                else if(binding.symptom6.isChecked()) warning.show();
+                else if(binding.contact1.isChecked()) warning.show();
+                else if(binding.contact2.isChecked()) warning.show();
+                else if(binding.contact3.isChecked()) warning.show();
+                else if(binding.contact4.isChecked()) warning.show();
                 else {
                     AlertDialog.Builder maybe_okay = new AlertDialog.Builder(CheckListActivity.this);
                     maybe_okay.setTitle("코로나가 의심되지 않습니다");
@@ -83,8 +67,7 @@ public class CheckListActivity extends AppCompatActivity {
                     maybe_okay.setPositiveButton("넵", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                            startActivity(intent);
+                            CheckListActivity.this.finish();
                         }
                     });
                     maybe_okay.show();
