@@ -1,9 +1,10 @@
 package org.tensorflow.lite.examples.classification.Presentation.HealthCenterActivity.Data;
 
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class SelectiveClinicJson {
+import java.io.Serializable;
+
+public class SelectiveClinicJson implements Serializable {
 
     @SerializedName("name")
     public String name;

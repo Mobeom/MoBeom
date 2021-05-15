@@ -30,8 +30,14 @@
             </intent-filter>
         </activity>
         <activity android:name=".Presentation.CheckListActivity.CheckListActivity" />
-        <activity android:name=".Presentation.HealthCenterActivity.LoadingActivity"/>
+        <activity android:name=".Presentation.HealthCenterActivity.LoadingActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Presentation.HealthCenterActivity.HealthCenterActivity" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
