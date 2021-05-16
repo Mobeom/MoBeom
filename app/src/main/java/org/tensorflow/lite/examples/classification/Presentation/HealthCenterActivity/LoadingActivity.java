@@ -24,7 +24,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LoadingActivity extends AppCompatActivity {
 
-    public HealthCenterController controller;
     public List<SelectiveClinicJson> arrayList;
     public List<SelectiveClinicJson> resource;
     static final String BASE_URL = String.valueOf(R.string.BASE_URL);
