@@ -1,5 +1,3 @@
 /build
 
 /build/
-
-src/main/java/org/tensorflow/lite/examples/classification/Presentation/HealthCenterActivity/Data/ConstantValue.java

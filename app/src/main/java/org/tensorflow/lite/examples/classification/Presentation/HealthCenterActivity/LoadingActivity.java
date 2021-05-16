@@ -10,7 +10,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import org.tensorflow.lite.examples.classification.Presentation.HealthCenterActivity.Data.ApiService;
-import org.tensorflow.lite.examples.classification.Presentation.HealthCenterActivity.Data.ConstantValue;
 import org.tensorflow.lite.examples.classification.Presentation.HealthCenterActivity.Data.SelectiveClinicJson;
 import org.tensorflow.lite.examples.classification.R;
 
@@ -28,7 +27,7 @@ public class LoadingActivity extends AppCompatActivity {
     public HealthCenterController controller;
     public List<SelectiveClinicJson> arrayList;
     public List<SelectiveClinicJson> resource;
-    static final String BASE_URL = ConstantValue.Url.BASE_URL;
+    static final String BASE_URL = String.valueOf(R.string.BASE_URL);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
