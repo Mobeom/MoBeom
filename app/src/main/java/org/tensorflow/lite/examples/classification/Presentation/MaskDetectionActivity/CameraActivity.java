@@ -35,13 +35,14 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Trace;
-
+import androidx.annotation.NonNull;
 import androidx.annotation.UiThread;
 import androidx.appcompat.app.AppCompatActivity;
-
+import androidx.appcompat.widget.Toolbar;
 import android.util.Size;
 import android.view.Surface;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -49,9 +50,10 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import java.nio.ByteBuffer;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.tensorflow.lite.examples.classification.Presentation.MaskDetectionActivity.env.ImageUtils;
 import org.tensorflow.lite.examples.classification.Presentation.MaskDetectionActivity.env.Logger;
@@ -60,8 +62,9 @@ import org.tensorflow.lite.examples.classification.Presentation.MaskDetectionAct
 import org.tensorflow.lite.examples.classification.Presentation.MaskDetectionActivity.tflite.Classifier.Recognition;
 import org.tensorflow.lite.examples.classification.R;
 
+
 public abstract class CameraActivity extends AppCompatActivity
-    implements OnImageAvailableListener,
+        implements OnImageAvailableListener,
         Camera.PreviewCallback,
         View.OnClickListener,
         AdapterView.OnItemSelectedListener {
@@ -83,18 +86,18 @@ public abstract class CameraActivity extends AppCompatActivity
   private Runnable imageConverter;
   private LinearLayout bottomSheetLayout;
   private LinearLayout gestureLayout;
-  //private BottomSheetBehavior sheetBehavior;
+  private BottomSheetBehavior sheetBehavior;
   protected TextView recognitionTextView,
-      recognition1TextView,
-      recognition2TextView,
-      recognitionValueTextView,
-      recognition1ValueTextView,
-      recognition2ValueTextView;
+          recognition1TextView,
+          recognition2TextView,
+          recognitionValueTextView,
+          recognition1ValueTextView,
+          recognition2ValueTextView;
   protected TextView frameValueTextView,
-      cropValueTextView,
-      cameraResolutionTextView,
-      rotationTextView,
-      inferenceTimeTextView;
+          cropValueTextView,
+          cameraResolutionTextView,
+          rotationTextView,
+          inferenceTimeTextView;
   protected ImageView bottomSheetArrowImageView;
   private ImageView plusImageView, minusImageView;
   private Spinner modelSpinner;
@@ -105,7 +108,7 @@ public abstract class CameraActivity extends AppCompatActivity
   private Model model = Model.FLOAT;
   private Device device = Device.CPU;
   private int numThreads = -1;
-   MediaPlayer mp,mp1,mp2;
+  MediaPlayer mp,mp1,mp2;
   @Override
   protected void onCreate(final Bundle savedInstanceState) {
     LOGGER.d("onCreate " + this);
@@ -131,55 +134,55 @@ public abstract class CameraActivity extends AppCompatActivity
     deviceSpinner = findViewById(R.id.device_spinner);
     bottomSheetLayout = findViewById(R.id.bottom_sheet_layout);
     gestureLayout = findViewById(R.id.gesture_layout);
-    //sheetBehavior = BottomSheetBehavior.from(bottomSheetLayout);
+    sheetBehavior = BottomSheetBehavior.from(bottomSheetLayout);
     bottomSheetArrowImageView = findViewById(R.id.bottom_sheet_arrow);
 
-    //ViewTreeObserver vto = gestureLayout.getViewTreeObserver();
-//    vto.addOnGlobalLayoutListener(
-//        new ViewTreeObserver.OnGlobalLayoutListener() {
-//          @Override
-//          public void onGlobalLayout() {
-//            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
-//              gestureLayout.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-//            } else {
-//              gestureLayout.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-//            }
-//            //                int width = bottomSheetLayout.getMeasuredWidth();
-//            int height = gestureLayout.getMeasuredHeight();
-//
-//            sheetBehavior.setPeekHeight(height);
-//          }
-//        });
-//    sheetBehavior.setHideable(false);
-//
-//    sheetBehavior.setBottomSheetCallback(
-//        new BottomSheetBehavior.BottomSheetCallback() {
-//          @Override
-//          public void onStateChanged(@NonNull View bottomSheet, int newState) {
-//            switch (newState) {
-//              case BottomSheetBehavior.STATE_HIDDEN:
-//                break;
-//              case BottomSheetBehavior.STATE_EXPANDED:
-//                {
-//                  bottomSheetArrowImageView.setImageResource(R.drawable.icn_chevron_down);
-//                }
-//                break;
-//              case BottomSheetBehavior.STATE_COLLAPSED:
-//                {
-//                  bottomSheetArrowImageView.setImageResource(R.drawable.icn_chevron_up);
-//                }
-//                break;
-//              case BottomSheetBehavior.STATE_DRAGGING:
-//                break;
-//              case BottomSheetBehavior.STATE_SETTLING:
-//                bottomSheetArrowImageView.setImageResource(R.drawable.icn_chevron_up);
-//                break;
-//            }
-//          }
-//
-//          @Override
-//          public void onSlide(@NonNull View bottomSheet, float slideOffset) {}
-//        });
+    ViewTreeObserver vto = gestureLayout.getViewTreeObserver();
+    vto.addOnGlobalLayoutListener(
+            new ViewTreeObserver.OnGlobalLayoutListener() {
+              @Override
+              public void onGlobalLayout() {
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
+                  gestureLayout.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+                } else {
+                  gestureLayout.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                }
+                //                int width = bottomSheetLayout.getMeasuredWidth();
+                int height = gestureLayout.getMeasuredHeight();
+
+                sheetBehavior.setPeekHeight(height);
+              }
+            });
+    sheetBehavior.setHideable(false);
+
+    sheetBehavior.setBottomSheetCallback(
+            new BottomSheetBehavior.BottomSheetCallback() {
+              @Override
+              public void onStateChanged(@NonNull View bottomSheet, int newState) {
+                switch (newState) {
+                  case BottomSheetBehavior.STATE_HIDDEN:
+                    break;
+                  case BottomSheetBehavior.STATE_EXPANDED:
+                  {
+                    bottomSheetArrowImageView.setImageResource(R.drawable.icn_chevron_down);
+                  }
+                  break;
+                  case BottomSheetBehavior.STATE_COLLAPSED:
+                  {
+                    bottomSheetArrowImageView.setImageResource(R.drawable.icn_chevron_up);
+                  }
+                  break;
+                  case BottomSheetBehavior.STATE_DRAGGING:
+                    break;
+                  case BottomSheetBehavior.STATE_SETTLING:
+                    bottomSheetArrowImageView.setImageResource(R.drawable.icn_chevron_up);
+                    break;
+                }
+              }
+
+              @Override
+              public void onSlide(@NonNull View bottomSheet, float slideOffset) {}
+            });
 
     recognitionTextView = findViewById(R.id.detected_item);
     recognitionValueTextView = findViewById(R.id.detected_item_value);
@@ -194,15 +197,15 @@ public abstract class CameraActivity extends AppCompatActivity
     rotationTextView = findViewById(R.id.rotation_info);
     inferenceTimeTextView = findViewById(R.id.inference_info);
 
-    //modelSpinner.setOnItemSelectedListener(this);
-    //deviceSpinner.setOnItemSelectedListener(this);
+    modelSpinner.setOnItemSelectedListener(this);
+    deviceSpinner.setOnItemSelectedListener(this);
 
-    //plusImageView.setOnClickListener(this);
-    //minusImageView.setOnClickListener(this);
+    plusImageView.setOnClickListener(this);
+    minusImageView.setOnClickListener(this);
 
-    //model = Model.valueOf(modelSpinner.getSelectedItem().toString().toUpperCase());
-    //device = Device.valueOf(deviceSpinner.getSelectedItem().toString());
-    //numThreads = Integer.parseInt(threadsTextView.getText().toString().trim());
+    model = Model.valueOf(modelSpinner.getSelectedItem().toString().toUpperCase());
+    device = Device.valueOf(deviceSpinner.getSelectedItem().toString());
+    numThreads = Integer.parseInt(threadsTextView.getText().toString().trim());
   }
 
   protected int[] getRgbBytes() {
@@ -245,21 +248,21 @@ public abstract class CameraActivity extends AppCompatActivity
     yRowStride = previewWidth;
 
     imageConverter =
-        new Runnable() {
-          @Override
-          public void run() {
-            ImageUtils.convertYUV420SPToARGB8888(bytes, previewWidth, previewHeight, rgbBytes);
-          }
-        };
+            new Runnable() {
+              @Override
+              public void run() {
+                ImageUtils.convertYUV420SPToARGB8888(bytes, previewWidth, previewHeight, rgbBytes);
+              }
+            };
 
     postInferenceCallback =
-        new Runnable() {
-          @Override
-          public void run() {
-            camera.addCallbackBuffer(bytes);
-            isProcessingFrame = false;
-          }
-        };
+            new Runnable() {
+              @Override
+              public void run() {
+                camera.addCallbackBuffer(bytes);
+                isProcessingFrame = false;
+              }
+            };
     processImage();
   }
 
@@ -293,30 +296,30 @@ public abstract class CameraActivity extends AppCompatActivity
       final int uvPixelStride = planes[1].getPixelStride();
 
       imageConverter =
-          new Runnable() {
-            @Override
-            public void run() {
-              ImageUtils.convertYUV420ToARGB8888(
-                  yuvBytes[0],
-                  yuvBytes[1],
-                  yuvBytes[2],
-                  previewWidth,
-                  previewHeight,
-                  yRowStride,
-                  uvRowStride,
-                  uvPixelStride,
-                  rgbBytes);
-            }
-          };
+              new Runnable() {
+                @Override
+                public void run() {
+                  ImageUtils.convertYUV420ToARGB8888(
+                          yuvBytes[0],
+                          yuvBytes[1],
+                          yuvBytes[2],
+                          previewWidth,
+                          previewHeight,
+                          yRowStride,
+                          uvRowStride,
+                          uvPixelStride,
+                          rgbBytes);
+                }
+              };
 
       postInferenceCallback =
-          new Runnable() {
-            @Override
-            public void run() {
-              image.close();
-              isProcessingFrame = false;
-            }
-          };
+              new Runnable() {
+                @Override
+                public void run() {
+                  image.close();
+                  isProcessingFrame = false;
+                }
+              };
 
       processImage();
     } catch (final Exception e) {
@@ -402,7 +405,7 @@ public abstract class CameraActivity extends AppCompatActivity
 
   @Override
   public void onRequestPermissionsResult(
-      final int requestCode, final String[] permissions, final int[] grantResults) {
+          final int requestCode, final String[] permissions, final int[] grantResults) {
     if (requestCode == PERMISSIONS_REQUEST) {
       if (allPermissionsGranted(grantResults)) {
         setFragment();
@@ -436,7 +439,7 @@ public abstract class CameraActivity extends AppCompatActivity
                 CameraActivity.this,
                 "Camera permission is required for this demo",
                 Toast.LENGTH_LONG)
-            .show();
+                .show();
       }
       requestPermissions(new String[] {PERMISSION_CAMERA}, PERMISSIONS_REQUEST);
     }
@@ -444,7 +447,7 @@ public abstract class CameraActivity extends AppCompatActivity
 
   // Returns true if the device supports the required hardware level, or better.
   private boolean isHardwareLevelSupported(
-      CameraCharacteristics characteristics, int requiredLevel) {
+          CameraCharacteristics characteristics, int requiredLevel) {
     int deviceLevel = characteristics.get(CameraCharacteristics.INFO_SUPPORTED_HARDWARE_LEVEL);
     if (deviceLevel == CameraCharacteristics.INFO_SUPPORTED_HARDWARE_LEVEL_LEGACY) {
       return requiredLevel == deviceLevel;
@@ -466,7 +469,7 @@ public abstract class CameraActivity extends AppCompatActivity
         }
 
         final StreamConfigurationMap map =
-            characteristics.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP);
+                characteristics.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP);
 
         if (map == null) {
           continue;
@@ -476,9 +479,9 @@ public abstract class CameraActivity extends AppCompatActivity
         // This should help with legacy situations where using the camera2 API causes
         // distorted or otherwise broken previews.
         useCamera2API =
-            (facing == CameraCharacteristics.LENS_FACING_EXTERNAL)
-                || isHardwareLevelSupported(
-                    characteristics, CameraCharacteristics.INFO_SUPPORTED_HARDWARE_LEVEL_FULL);
+                (facing == CameraCharacteristics.LENS_FACING_EXTERNAL)
+                        || isHardwareLevelSupported(
+                        characteristics, CameraCharacteristics.INFO_SUPPORTED_HARDWARE_LEVEL_FULL);
         LOGGER.i("Camera API lv2?: %s", useCamera2API);
         return cameraId;
       }
@@ -495,24 +498,24 @@ public abstract class CameraActivity extends AppCompatActivity
     Fragment fragment;
     if (useCamera2API) {
       CameraConnectionFragment camera2Fragment =
-          CameraConnectionFragment.newInstance(
-              new CameraConnectionFragment.ConnectionCallback() {
-                @Override
-                public void onPreviewSizeChosen(final Size size, final int rotation) {
-                  previewHeight = size.getHeight();
-                  previewWidth = size.getWidth();
-                  CameraActivity.this.onPreviewSizeChosen(size, rotation);
-                }
-              },
-              this,
-              getLayoutId(),
-              getDesiredPreviewFrameSize());
+              CameraConnectionFragment.newInstance(
+                      new CameraConnectionFragment.ConnectionCallback() {
+                        @Override
+                        public void onPreviewSizeChosen(final Size size, final int rotation) {
+                          previewHeight = size.getHeight();
+                          previewWidth = size.getWidth();
+                          CameraActivity.this.onPreviewSizeChosen(size, rotation);
+                        }
+                      },
+                      this,
+                      getLayoutId(),
+                      getDesiredPreviewFrameSize());
 
       camera2Fragment.setCamera(cameraId);
       fragment = camera2Fragment;
     } else {
       fragment =
-          new LegacyCameraConnectionFragment(this, getLayoutId(), getDesiredPreviewFrameSize());
+              new LegacyCameraConnectionFragment(this, getLayoutId(), getDesiredPreviewFrameSize());
     }
 
     getFragmentManager().beginTransaction().replace(R.id.container, fragment).commit();
@@ -549,7 +552,7 @@ public abstract class CameraActivity extends AppCompatActivity
         return 0;
     }
   }
-boolean hun = false;
+  boolean hun = false;
   boolean five = false;
   boolean ten = false;
   @UiThread
@@ -564,18 +567,18 @@ boolean hun = false;
                   String.format("%.2f", (100 * recognition.getConfidence())) + "%");
         float confi = 100 * recognition.getConfidence();
         try {
-          if (!five && recognitionTextView.getText().toString().equalsIgnoreCase("500") && confi>99 ) {
-            mp2.start();
+          if (!five && recognitionTextView.getText().toString().equalsIgnoreCase("0 Mask") && confi>70 ) {
+            //mp2.start();
             five =true;
             ten = false;
             hun = false;
-          } else if (!hun&& recognitionTextView.getText().toString().equalsIgnoreCase("100")&& confi>99) {
+          } else if (!hun&& recognitionTextView.getText().toString().equalsIgnoreCase("1 No Mask")&& confi>70) {
             mp.start();
             hun = true;
             five =false;
             ten = false;
-          } else if (!ten&&recognitionTextView.getText().toString().equalsIgnoreCase("10")&& confi>90 ) {
-            mp1.start();
+          } else if (!ten&&recognitionTextView.getText().toString().equalsIgnoreCase("2 Background")&& confi>70 ) {
+            //mp1.start();
             ten  =true;
             five =false;
             hun = false;
@@ -590,7 +593,7 @@ boolean hun = false;
         if (recognition1.getTitle() != null) recognition1TextView.setText(recognition1.getTitle());
         if (recognition1.getConfidence() != null)
           recognition1ValueTextView.setText(
-              String.format("%.2f", (100 * recognition1.getConfidence())) + "%");
+                  String.format("%.2f", (100 * recognition1.getConfidence())) + "%");
       }
 
       Recognition recognition2 = results.get(2);
@@ -598,7 +601,7 @@ boolean hun = false;
         if (recognition2.getTitle() != null) recognition2TextView.setText(recognition2.getTitle());
         if (recognition2.getConfidence() != null)
           recognition2ValueTextView.setText(
-              String.format("%.2f", (100 * recognition2.getConfidence())) + "%");
+                  String.format("%.2f", (100 * recognition2.getConfidence())) + "%");
       }
     }
   }
