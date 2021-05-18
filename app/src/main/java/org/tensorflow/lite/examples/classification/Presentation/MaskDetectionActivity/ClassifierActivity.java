@@ -21,6 +21,7 @@ import android.graphics.Bitmap.Config;
 import android.graphics.Typeface;
 import android.media.ImageReader.OnImageAvailableListener;
 import android.os.SystemClock;
+import android.util.Log;
 import android.util.Size;
 import android.util.TypedValue;
 import android.widget.Toast;
@@ -96,6 +97,7 @@ public class ClassifierActivity extends CameraActivity implements OnImageAvailab
                           classifier.recognizeImage(rgbFrameBitmap, sensorOrientation);
                   lastProcessingTimeMs = SystemClock.uptimeMillis() - startTime;
                   LOGGER.v("Detect: %s", results);
+                  Log.e("results", results.toString()); // 몇 프로인지 나오는 부분 중요!!!!
 
                   runOnUiThread(
                           new Runnable() {
