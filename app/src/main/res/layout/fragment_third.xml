@@ -10,7 +10,7 @@
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layoutDescription="@xml/fragment_third_xml_constraintlayout_scene">
+        app:layoutDescription="@xml/fragment_third_xml_constraintlayout_scene2">
 
         <TextView
             android:id="@+id/tv_firstFragmentContent"
@@ -26,6 +26,19 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="280dp"
+            android:layout_height="280dp"
+            android:layout_marginHorizontal="50dp"
+            android:contentDescription="Mask Image"
+            android:elevation="1dp"
+            android:src="@drawable/ic_masks_24_olive"
+            app:layout_constraintBottom_toBottomOf="@id/iv_firstFragmentImage"
+            app:layout_constraintEnd_toEndOf="@id/iv_firstFragmentImage"
+            app:layout_constraintStart_toStartOf="@id/iv_firstFragmentImage"
+            app:layout_constraintTop_toTopOf="@id/iv_firstFragmentImage" />
+
         <LinearLayout
             android:id="@+id/iv_firstFragmentImage"
             android:layout_width="match_parent"
@@ -37,16 +50,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_firstFragmentContent">
-
-            <ImageView
-                android:layout_width="280dp"
-                android:layout_height="280dp"
-                android:layout_marginHorizontal="50dp"
-                android:contentDescription="Mask Image"
-                android:src="@drawable/ic_masks_24_olive" />
-
-        </LinearLayout>
+            app:layout_constraintTop_toBottomOf="@id/tv_firstFragmentContent" />
 
         <Button
             android:id="@+id/bt_enterApp"
