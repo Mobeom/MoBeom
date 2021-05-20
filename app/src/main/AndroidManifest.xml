@@ -22,11 +22,9 @@
             android:name=".Presentation.MaskDetectionActivity.ClassifierActivity"
             android:label="@string/activity_name_classification"
             android:screenOrientation="portrait" />
-        <activity android:name=".Presentation.MainActivity.MainActivity">
-
-        </activity>
+        <activity android:name=".Presentation.MainActivity.MainActivity" />
         <activity android:name=".Presentation.CheckListActivity.CheckListActivity" />
-        <activity android:name=".Presentation.HealthCenterActivity.LoadingActivity"/>
+        <activity android:name=".Presentation.HealthCenterActivity.LoadingActivity" />
         <activity android:name=".Presentation.HealthCenterActivity.HealthCenterActivity" />
         <activity android:name=".Presentation.SplashActivity.SplashActivity">
             <intent-filter>
@@ -35,6 +33,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />

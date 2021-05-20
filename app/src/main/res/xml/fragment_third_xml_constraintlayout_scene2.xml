@@ -8,7 +8,23 @@
         motion:constraintSetStart="@id/start"
         motion:duration="1000">
        <KeyFrameSet>
+           <KeyAttribute
+               motion:motionTarget="@+id/iv_mask"
+               motion:framePosition="20"
+               android:scaleX="0.6"
+               android:scaleY="0.6" />
+           <KeyAttribute
+               motion:motionTarget="@+id/iv_mask"
+               motion:framePosition="50"
+               android:scaleX="0.6"
+               android:scaleY="0.6" />
+           <KeyAttribute
+               motion:motionTarget="@+id/iv_mask"
+               motion:framePosition="100"
+               android:scaleX="50"
+               android:scaleY="50" />
        </KeyFrameSet>
+        <OnClick motion:targetId="@+id/iv_mask" />
     </Transition>
 
     <ConstraintSet android:id="@+id/start">
