@@ -5,13 +5,12 @@
     <data>
 
 
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/pastel_green"
+        android:background="@color/olive"
         android:orientation="vertical">
 
 
@@ -31,7 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="완치 환자"
-                android:textColor="@color/pastel_white"
+                android:textColor="@color/beige"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toStartOf="@id/tv_decide_status"
                 app:layout_constraintStart_toStartOf="parent"
@@ -56,7 +55,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="확진 환자"
-                android:textColor="@color/pastel_white"
+                android:textColor="@color/beige"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toStartOf="@id/tv_covid_death_status"
                 app:layout_constraintStart_toEndOf="@id/tv_today_covid_status"
@@ -82,7 +81,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="총 사망자"
-                android:textColor="@color/pastel_white"
+                android:textColor="@color/beige"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/tv_decide_status"
@@ -119,34 +118,40 @@
             android:id="@+id/button_mask_detector"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/shape_use_button"
+            android:foreground="@drawable/ripple_basic"
             android:text="마스크 디텍터"
-            app:layout_constraintTop_toTopOf="@id/button_self_check"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@id/button_self_check"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/button_self_check"
-            />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/button_self_check" />
 
         <Button
             android:id="@+id/button_self_check"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/shape_use_button"
+            android:foreground="@drawable/ripple_basic"
             android:text="자가 진단"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/iv_mask"
-            />
+            app:layout_constraintTop_toBottomOf="@id/iv_mask" />
 
         <Button
             android:id="@+id/button_health_center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/shape_use_button"
+            android:foreground="@drawable/ripple_basic"
             android:text="인근 보건소"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@id/button_self_check"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/button_self_check"
-            app:layout_constraintTop_toTopOf="@id/button_self_check"
-            />
+            app:layout_constraintTop_toTopOf="@id/button_self_check" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
