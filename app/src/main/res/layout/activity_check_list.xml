@@ -5,7 +5,10 @@
     <data>
 
     </data>
-
+    <ScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -18,7 +21,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:textStyle="bold"
-            android:layout_marginVertical="10dp"
+            android:layout_marginVertical="20dp"
             app:layout_constraintBottom_toTopOf="@id/check_list"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -37,8 +40,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"></TextView>
-
+                app:layout_constraintTop_toTopOf="parent"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -46,22 +48,20 @@
             android:id="@+id/check_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/box_style"
             android:layout_marginHorizontal="20dp"
             android:layout_marginVertical="5dp"
-            android:background="@drawable/box_style"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/check_list_title"
             app:layout_constraintVertical_chainStyle="packed">
-
-
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/symptom"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="15dp"
-                android:layout_marginVertical="3dp"
+                android:layout_marginVertical="10dp"
                 app:layout_constraintBottom_toTopOf="@id/contact"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -73,8 +73,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="15dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="5dp"
+                    android:layout_marginVertical="10dp"
                     android:text="증상 여부"
                     android:textColor="@color/black"
                     android:textSize="20dp"
@@ -91,10 +90,21 @@
                     android:text="37.5도 이상의 열이 있으십니까?"
                     android:textColor="@color/black"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toTopOf="@id/symptom2"
+                    app:layout_constraintBottom_toTopOf="@id/line1"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/symptom_text" />
+                <View
+                    android:id="@+id/line1"
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:background="@color/pastel_green"
+                    android:layout_margin="5dp"
+                    app:layout_constraintBottom_toTopOf="@id/symptom2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/symptom1"
+                    />
 
                 <CheckBox
                     android:id="@+id/symptom2"
@@ -103,10 +113,21 @@
                     android:text="급성 호흡기 증상이 있으십니까?(호흡곤란, 기침 등)"
                     android:textColor="@color/black"
                     android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@id/line2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/line1" />
+                <View
+                    android:id="@+id/line2"
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:background="@color/pastel_green"
+                    android:layout_margin="5dp"
                     app:layout_constraintBottom_toTopOf="@id/symptom3"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/symptom1" />
+                    app:layout_constraintTop_toBottomOf="@+id/symptom2"
+                    />
 
                 <CheckBox
                     android:id="@+id/symptom3"
@@ -115,10 +136,21 @@
                     android:text="인후통(목 쓰림/목 아픔)이나 가래의 증상이 있으십니까?"
                     android:textColor="@color/black"
                     android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@id/line3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/line2" />
+                <View
+                    android:id="@+id/line3"
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:background="@color/pastel_green"
+                    android:layout_margin="5dp"
                     app:layout_constraintBottom_toTopOf="@id/symptom4"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/symptom2" />
+                    app:layout_constraintTop_toBottomOf="@+id/symptom3"
+                    />
 
                 <CheckBox
                     android:id="@+id/symptom4"
@@ -127,10 +159,21 @@
                     android:text="오한, 근육통, 두통의 증상이 있으십니까?"
                     android:textColor="@color/black"
                     android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@id/line4"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/line3" />
+                <View
+                    android:id="@+id/line4"
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:background="@color/pastel_green"
+                    android:layout_margin="5dp"
                     app:layout_constraintBottom_toTopOf="@id/symptom5"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/symptom3" />
+                    app:layout_constraintTop_toBottomOf="@+id/symptom4"
+                    />
 
                 <CheckBox
                     android:id="@+id/symptom5"
@@ -139,10 +182,21 @@
                     android:text="후각 또는 미각손실의 증상이 있으십니까?"
                     android:textColor="@color/black"
                     android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@id/line5"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/line4" />
+                <View
+                    android:id="@+id/line5"
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:background="@color/pastel_green"
+                    android:layout_margin="5dp"
                     app:layout_constraintBottom_toTopOf="@id/symptom6"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/symptom4" />
+                    app:layout_constraintTop_toBottomOf="@+id/symptom5"
+                    />
 
                 <CheckBox
                     android:id="@+id/symptom6"
@@ -155,8 +209,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/symptom5" />
-
-
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -164,8 +216,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="15dp"
-                android:layout_marginVertical="3dp"
-                app:layout_constraintBottom_toTopOf="@id/submit"
+                android:layout_marginVertical="10dp"
+                app:layout_constraintBottom_toTopOf="@id/vaccine"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/symptom">
@@ -175,8 +227,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="15dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginVertical="10dp"
                     android:text="접촉 의심"
                     android:textColor="@color/black"
                     android:textSize="20dp"
@@ -193,10 +244,21 @@
                     android:text="최근 14일 이내 해외 코로나19 발생지역을 방문하신 적이 있으십니까?"
                     android:textColor="@color/black"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toTopOf="@id/contact2"
+                    app:layout_constraintBottom_toTopOf="@id/line6"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/contact_text" />
+                <View
+                    android:id="@+id/line6"
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:background="@color/pastel_green"
+                    android:layout_margin="5dp"
+                    app:layout_constraintBottom_toTopOf="@id/contact2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/contact1"
+                    />
 
                 <CheckBox
                     android:id="@+id/contact2"
@@ -205,10 +267,21 @@
                     android:text="코로나 환자 및 의심 환자와 접촉하신 적이 있으십니까?"
                     android:textColor="@color/black"
                     android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@id/line7"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/line6" />
+                <View
+                    android:id="@+id/line7"
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:background="@color/pastel_green"
+                    android:layout_margin="5dp"
                     app:layout_constraintBottom_toTopOf="@id/contact3"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/contact1" />
+                    app:layout_constraintTop_toBottomOf="@+id/contact2"
+                    />
 
                 <CheckBox
                     android:id="@+id/contact3"
@@ -217,10 +290,21 @@
                     android:text="코로나 환자 발생 및 경유 병원에 외래진료, 응급실 진료, 입원 또는 방문하신 적이 있습니까?"
                     android:textColor="@color/black"
                     android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@id/line8"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/line7" />
+                <View
+                    android:id="@+id/line8"
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:background="@color/pastel_green"
+                    android:layout_margin="5dp"
                     app:layout_constraintBottom_toTopOf="@id/contact4"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/contact4" />
+                    app:layout_constraintTop_toBottomOf="@+id/contact3"
+                    />
 
                 <CheckBox
                     android:id="@+id/contact4"
@@ -232,7 +316,200 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/contact3" />
+                    app:layout_constraintTop_toBottomOf="@id/line8" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/vaccine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginVertical="10dp"
+                app:layout_constraintBottom_toTopOf="@id/submit"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/contact">
+
+                <TextView
+                    android:id="@+id/vaccine_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginVertical="10dp"
+                    android:text="백신 접종"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@id/vaccine1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/vaccine" />
+                <TextView
+                    android:id="@+id/vaccine1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="백신을 접종하셨습니까?"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_margin="10dp"
+                    app:layout_constraintBottom_toTopOf="@id/vaccine_answer"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/vaccine_text" />
+                <RadioGroup
+                    android:id="@+id/vaccine_answer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toTopOf="@id/vaccine2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/vaccine1">
+                    <RadioButton
+                        android:id="@+id/vaccine_yes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="네"
+                        android:layout_marginRight="80dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+                    <RadioButton
+                        android:id="@+id/vaccine_no"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="아니요"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+                </RadioGroup>
+
+                <TextView
+                    android:id="@+id/vaccine2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="어떤 백신을 접종하셨습니까?"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_margin="10dp"
+                    app:layout_constraintBottom_toTopOf="@id/vaccine2_answer"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/vaccine_answer" />
+                <RadioGroup
+                    android:id="@+id/vaccine2_answer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    app:layout_constraintBottom_toTopOf="@id/vaccine3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/vaccine2">
+                    <RadioButton
+                        android:id="@+id/vaccine_pfizer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="화이자 및 바이오엔텍"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+                    <RadioButton
+                        android:id="@+id/vaccine_moderna"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="모더나"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+                    <RadioButton
+                        android:id="@+id/vaccine_astra"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="아스트라제네카"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+                    <RadioButton
+                        android:id="@+id/vaccine_jassen"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="얀센"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+                </RadioGroup>
+
+                <TextView
+                    android:id="@+id/vaccine3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="접종 일자를 선택해주세요."
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_margin="10dp"
+                    app:layout_constraintBottom_toTopOf="@id/first"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/vaccine2_answer" />
+                <CheckBox
+                    android:id="@+id/first"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1차 접종"
+                    android:textColor="@color/black"
+                    android:layout_margin="5dp"
+                    android:onClick="OnClickHandler1"
+                    app:layout_constraintHorizontal_bias="0.05"
+                    app:layout_constraintBottom_toTopOf="@id/second"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/vaccine3" />
+                <TextView
+                    android:id="@+id/first_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:layout_margin="5dp"
+                    app:layout_constraintHorizontal_bias="0.8"
+                    app:layout_constraintBottom_toTopOf="@id/second"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/vaccine3"/>
+
+                <CheckBox
+                    android:id="@+id/second"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2차 접종"
+                    android:textColor="@color/black"
+                    android:layout_margin="5dp"
+                    android:onClick="OnClickHandler2"
+                    app:layout_constraintHorizontal_bias="0.05"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/first" />
+                <TextView
+                    android:id="@+id/second_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:layout_margin="5dp"
+                    app:layout_constraintHorizontal_bias="0.8"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/first_date"/>
+
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -244,7 +521,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/contact">
+                app:layout_constraintTop_toBottomOf="@id/vaccine">
 
                 <Button
                     android:id="@+id/return_to_home"
@@ -268,5 +545,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>
