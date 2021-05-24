@@ -11,15 +11,170 @@
         android:layout_height="match_parent">
 
         <TextView
+            android:id="@+id/tv_mobeom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Team Mobeom"
-            android:textStyle="bold"
-            android:textSize="32sp"
             android:textColor="@color/black"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/iv_mobeom_icon"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_mobeom_icon"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/main_icon"
+            app:layout_constraintBottom_toTopOf="@id/iv_dongwoo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_mobeom" />
+
+
+        <ImageView
+            android:id="@+id/iv_dongwoo"
+            android:layout_width="85dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/dongwoo"
+            app:layout_constraintBottom_toTopOf="@id/iv_seongjin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_mobeom_icon" />
+
+        <TextView
+            android:id="@+id/tv_dongwoo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="이동우"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@id/tv_dongwoo_detail"
+            app:layout_constraintStart_toEndOf="@id/iv_dongwoo"
+            app:layout_constraintTop_toTopOf="@id/iv_dongwoo" />
+
+        <TextView
+            android:id="@+id/tv_dongwoo_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="너무 재밌게 개발했습니다."
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@id/iv_dongwoo"
+            app:layout_constraintStart_toEndOf="@id/iv_dongwoo"
+            app:layout_constraintTop_toBottomOf="@id/tv_dongwoo" />
+
+
+        <ImageView
+            android:id="@+id/iv_seongjin"
+            android:layout_width="85dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/seongjin"
+            app:layout_constraintBottom_toTopOf="@id/iv_gyubbin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_dongwoo" />
+
+        <TextView
+            android:id="@+id/tv_seongjin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="박성진"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@id/tv_seongjin_detail"
+            app:layout_constraintStart_toEndOf="@id/iv_seongjin"
+            app:layout_constraintTop_toTopOf="@id/iv_seongjin" />
+
+        <TextView
+            android:id="@+id/tv_seongjin_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="너무 재밌게 개발했습니다."
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@id/iv_seongjin"
+            app:layout_constraintStart_toEndOf="@id/iv_seongjin"
+            app:layout_constraintTop_toBottomOf="@id/tv_seongjin" />
+
+
+        <ImageView
+            android:id="@+id/iv_gyubbin"
+            android:layout_width="85dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/gyubbin"
+            app:layout_constraintBottom_toTopOf="@id/iv_wonjoong"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_seongjin" />
+
+        <TextView
+            android:id="@+id/tv_gyubbin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="김규빈"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@id/tv_gyubbin_detail"
+            app:layout_constraintStart_toEndOf="@id/iv_gyubbin"
+            app:layout_constraintTop_toTopOf="@id/iv_gyubbin" />
+
+        <TextView
+            android:id="@+id/tv_gyubbin_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="너무 재밌게 개발했습니다."
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@id/iv_gyubbin"
+            app:layout_constraintStart_toEndOf="@id/iv_gyubbin"
+            app:layout_constraintTop_toBottomOf="@id/tv_gyubbin" />
+
+        <ImageView
+            android:id="@+id/iv_wonjoong"
+            android:layout_width="85dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/wonjoong"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_gyubbin" />
+
+        <TextView
+            android:id="@+id/tv_wonjoong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="이원중"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@id/tv_wonjoong_detail"
+            app:layout_constraintStart_toEndOf="@id/iv_wonjoong"
+            app:layout_constraintTop_toTopOf="@id/iv_wonjoong" />
+
+        <TextView
+            android:id="@+id/tv_wonjoong_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="너무 재밌게 개발했습니다."
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@id/iv_wonjoong"
+            app:layout_constraintStart_toEndOf="@id/iv_wonjoong"
+            app:layout_constraintTop_toBottomOf="@id/tv_wonjoong" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
