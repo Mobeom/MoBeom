@@ -26,6 +26,7 @@
         <activity android:name=".Presentation.CheckListActivity.CheckListActivity" />
         <activity android:name=".Presentation.HealthCenterActivity.LoadingActivity" />
         <activity android:name=".Presentation.HealthCenterActivity.HealthCenterActivity" />
+        <activity android:name=".Presentation.HiddenActivity.HiddenActivity"/>
         <activity android:name=".Presentation.SplashActivity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
