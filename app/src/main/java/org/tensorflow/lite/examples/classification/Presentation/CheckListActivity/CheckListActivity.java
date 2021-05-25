@@ -4,11 +4,15 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 
 import android.view.View;
@@ -18,6 +22,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ListView;
 
+import org.tensorflow.lite.examples.classification.Presentation.HealthCenterActivity.LoadingActivity;
 import org.tensorflow.lite.examples.classification.Presentation.MainActivity.MainActivity;
 import org.tensorflow.lite.examples.classification.Presentation.MaskDetectionActivity.ClassifierActivity;
 import org.tensorflow.lite.examples.classification.R;
@@ -59,7 +64,15 @@ public class CheckListActivity extends AppCompatActivity {
                 warning.setTitle("코로나가 의심됩니다");
                 warning.setMessage("인근 보건소 위치를 알려드릴까요?");
                 warning.setIcon(R.drawable.ic_masks_24);
-                warning.setPositiveButton("보러갈래", null);
+                warning.setPositiveButton("보러갈래", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Intent intent = new Intent(getApplicationContext(), LoadingActivity.class);
+                        if (Build.VERSION.SDK_INT >= 23 && ContextCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                            ActivityCompat.requestPermissions(CheckListActivity.this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 0); }
+                        else startActivity(intent);
+                    }
+                });
                 warning.setNegativeButton("그정도는..", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
