@@ -8,7 +8,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/beige">
 
         <TextView
             android:id="@+id/tv_mobeom"
@@ -27,7 +28,7 @@
             android:id="@+id/iv_mobeom_icon"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/main_icon"
+            android:src="@drawable/icon_no_background"
             app:layout_constraintBottom_toTopOf="@id/iv_dongwoo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -51,6 +52,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:text="이동우"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="@id/tv_dongwoo_detail"
@@ -62,7 +64,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:text="너무 재밌게 개발했습니다."
+            android:text="서버는 내가 책임진다!"
             android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@id/iv_dongwoo"
@@ -87,6 +89,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:text="박성진"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="@id/tv_seongjin_detail"
@@ -98,7 +101,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:text="너무 재밌게 개발했습니다."
+            android:text="삐빅 인공지능입니다."
             android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@id/iv_seongjin"
@@ -125,6 +128,7 @@
             android:text="김규빈"
             android:textColor="@color/black"
             android:textSize="24sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@id/tv_gyubbin_detail"
             app:layout_constraintStart_toEndOf="@id/iv_gyubbin"
             app:layout_constraintTop_toTopOf="@id/iv_gyubbin" />
@@ -134,7 +138,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:text="너무 재밌게 개발했습니다."
+            android:text="백신 맞으셨나요?"
             android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@id/iv_gyubbin"
@@ -160,6 +164,7 @@
             android:text="이원중"
             android:textColor="@color/black"
             android:textSize="24sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@id/tv_wonjoong_detail"
             app:layout_constraintStart_toEndOf="@id/iv_wonjoong"
             app:layout_constraintTop_toTopOf="@id/iv_wonjoong" />
@@ -169,7 +174,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:text="너무 재밌게 개발했습니다."
+            android:text="안드로이드 없이 못살아~"
             android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@id/iv_wonjoong"
