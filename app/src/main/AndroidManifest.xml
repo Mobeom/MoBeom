@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.tensorflow.lite.examples.classification">
 
@@ -5,8 +6,11 @@
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -17,14 +21,22 @@
         <activity
             android:name=".Presentation.MaskDetectionActivity.ClassifierActivity"
             android:label="@string/activity_name_classification"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".Presentation.MainActivity.MainActivity">
+            android:screenOrientation="portrait" />
+        <activity android:name=".Presentation.MainActivity.MainActivity" />
+        <activity android:name=".Presentation.CheckListActivity.CheckListActivity" />
+        <activity android:name=".Presentation.HealthCenterActivity.LoadingActivity" />
+        <activity android:name=".Presentation.HealthCenterActivity.HealthCenterActivity" />
+        <activity android:name=".Presentation.SplashActivity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Presentation.CheckListActivity.CheckListActivity"/>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
     </application>
+
 </manifest>

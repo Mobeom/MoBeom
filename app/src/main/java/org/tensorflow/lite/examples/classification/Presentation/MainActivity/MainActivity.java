@@ -2,20 +2,23 @@ package org.tensorflow.lite.examples.classification.Presentation.MainActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 
 import org.tensorflow.lite.examples.classification.Data.API.CoronaAPI;
 import org.tensorflow.lite.examples.classification.Data.API.CoronaStatus;
 import org.tensorflow.lite.examples.classification.Presentation.CheckListActivity.CheckListActivity;
+import org.tensorflow.lite.examples.classification.Presentation.HealthCenterActivity.LoadingActivity;
 import org.tensorflow.lite.examples.classification.Presentation.MaskDetectionActivity.ClassifierActivity;
 import org.tensorflow.lite.examples.classification.R;
 import org.tensorflow.lite.examples.classification.databinding.ActivityMainBinding;
-import org.xml.sax.SAXException;
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
@@ -23,8 +26,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
-
-import javax.xml.parsers.ParserConfigurationException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -47,13 +48,19 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        binding.buttonHealthCenter.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), LoadingActivity.class);
+            if (Build.VERSION.SDK_INT >= 23 && ContextCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(MainActivity.this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 0); }
+            else startActivity(intent);
+        });
 
         new Thread(() -> {
             try {
                 Date currentTime = Calendar.getInstance().getTime();
                 Date yesterdayTime = new Date(System.currentTimeMillis() - 24 * 60 * 60 * 1000L);
                 CustomDate cd = getDate(currentTime, yesterdayTime);
-                CoronaStatus cs = CoronaAPI.getStatus(cd.yesterdayDate, cd.todayDate);
+                CoronaStatus cs = CoronaAPI.getStatus(cd.yesterdayDate, cd.todayDate, getBaseContext());
                 System.out.println("이거 -> " + cs.getDeathCnt());
                 runOnUiThread(() -> {
                     binding.tvDeathCnt.setText(cs.getDeathCnt() + "명");
