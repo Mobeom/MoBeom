@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -41,31 +40,11 @@ public class MainActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         setContentView(binding.getRoot());
 
-
-        binding.buttonMaskDetector.setOnClickListener(view -> {
-            Intent intent = new Intent(getApplicationContext(), ClassifierActivity.class);
-            startActivity(intent);
-        });
-
-        binding.buttonSelfCheck.setOnClickListener(view -> {
-            Intent intent = new Intent(getApplicationContext(), CheckListActivity.class);
-            startActivity(intent);
-        });
-
-        binding.buttonHealthCenter.setOnClickListener(view -> {
-            Intent intent = new Intent(getApplicationContext(), LoadingActivity.class);
-            if (Build.VERSION.SDK_INT >= 23 && ContextCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(MainActivity.this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 0);
-            } else startActivity(intent);
-        });
-
-        binding.ivMask.setOnClickListener(view -> {
-            maskClickCnt++;
-            if(maskClickCnt>=5){
-                Intent intent = new Intent(getApplicationContext(), HiddenActivity.class);
-                startActivity(intent);
-            }
-        });
+        // 각 버튼 클릭 리스너들
+        maskDetectorClickListener();
+        selfCheckClickListener();
+        healthCenterClickListener();
+        maskClickListener();
 
         new Thread(() -> {
             try {
@@ -87,6 +66,40 @@ public class MainActivity extends AppCompatActivity {
         }).start();
     }
 
+    private void maskDetectorClickListener() {
+        binding.buttonMaskDetector.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), ClassifierActivity.class);
+            startActivity(intent);
+        });
+    }
+
+    private void selfCheckClickListener() {
+        binding.buttonSelfCheck.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), CheckListActivity.class);
+            startActivity(intent);
+        });
+    }
+
+    private void healthCenterClickListener() {
+        binding.buttonHealthCenter.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), LoadingActivity.class);
+            if (Build.VERSION.SDK_INT >= 23 && ContextCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(MainActivity.this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 0);
+            } else startActivity(intent);
+        });
+    }
+
+    private void maskClickListener() {
+        binding.ivMask.setOnClickListener(view -> {
+            maskClickCnt++;
+            if (maskClickCnt >= 5) {
+                maskClickCnt = 0;
+                Intent intent = new Intent(getApplicationContext(), HiddenActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
     /**
      * API 형식에 맞춰서 date 값을 반환해주는 함수입니다.
      */
@@ -104,7 +117,6 @@ public class MainActivity extends AppCompatActivity {
         String yesterdayInFormat = yesterdayYear + yesterdayMonth + yesterdayDay;
         return new CustomDate(todayInFormat, yesterdayInFormat);
     }
-
 
     private static class CustomDate {
         private final String todayDate;
