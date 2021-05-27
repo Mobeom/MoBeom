@@ -30,7 +30,6 @@ import org.tensorflow.lite.examples.classification.Presentation.MaskDetectionAct
 import org.tensorflow.lite.examples.classification.R;
 import org.tensorflow.lite.examples.classification.databinding.ActivityMyinfoBinding;
 
-import java.util.Calendar;
 
 public class MyInfoActivity extends AppCompatActivity {
 
@@ -45,6 +44,21 @@ public class MyInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_myinfo);
         setContentView(binding.getRoot());
+
+        if (CheckListActivity.codiv19 == true) {binding.myCodiv19.setText("O");}
+        else {binding.myCodiv19.setText("X");}
+
+        if (CheckListActivity.vaccined == true) {binding.myGetVaccine.setText("O");}
+        else {binding.myGetVaccine.setText("X");}
+
+        if (CheckListActivity.what_vaccined != "") {binding.myWhatVaccine.setText(CheckListActivity.what_vaccined);}
+        else {binding.myWhatVaccine.setText("-");}
+
+        if (CheckListActivity.first_date_vaccined != "") {binding.myFirstVaccine.setText(CheckListActivity.first_date_vaccined);}
+        else {binding.myFirstVaccine.setText("-");}
+
+        if (CheckListActivity.second_date_vaccined != "") {binding.mySecondVaccine.setText(CheckListActivity.second_date_vaccined);}
+        else {binding.mySecondVaccine.setText("-");}
 
         binding.returnMain.setOnClickListener(new View.OnClickListener() {
             @Override
