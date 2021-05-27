@@ -48,6 +48,7 @@ public class HealthCenterActivity extends AppCompatActivity implements OnMapRead
             LatLng lo = new LatLng(clinic.x, clinic.y);
             MarkerOptions markerOptions = new MarkerOptions();
             markerOptions.title(clinic.name);
+            markerOptions.snippet(clinic.phone);
             markerOptions.position(lo);
 
             gMap.addMarker(markerOptions);
