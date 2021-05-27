@@ -4,9 +4,10 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.DatePicker;
 
 import androidx.annotation.Nullable;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
@@ -16,6 +17,7 @@ import android.widget.Button;
 
 import org.tensorflow.lite.examples.classification.Presentation.MainActivity.MainActivity;
 import org.tensorflow.lite.examples.classification.Presentation.MaskDetectionActivity.ClassifierActivity;
+import org.tensorflow.lite.examples.classification.Presentation.HealthCenterActivity.LoadingActivity;
 import org.tensorflow.lite.examples.classification.R;
 import org.tensorflow.lite.examples.classification.databinding.ActivityCheckListBinding;
 

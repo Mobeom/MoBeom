@@ -10,6 +10,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import org.tensorflow.lite.examples.classification.Presentation.HealthCenterActivity.Data.ApiService;
+import org.tensorflow.lite.examples.classification.Presentation.HealthCenterActivity.Data.SecretValues;
 import org.tensorflow.lite.examples.classification.Presentation.HealthCenterActivity.Data.SelectiveClinicJson;
 import org.tensorflow.lite.examples.classification.R;
 
@@ -23,15 +24,16 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LoadingActivity extends AppCompatActivity {
-
     public List<SelectiveClinicJson> arrayList;
     public List<SelectiveClinicJson> resource;
-    static final String BASE_URL = String.valueOf(R.string.BASE_URL);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loading);
+
+        SecretValues secretValues = new SecretValues();
+        String BASE_URL = secretValues.getUrl();
 
         Gson gson = new GsonBuilder()
                 .setLenient()
