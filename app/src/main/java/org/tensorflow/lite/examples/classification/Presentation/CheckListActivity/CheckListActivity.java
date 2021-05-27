@@ -20,7 +20,6 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.ListView;
 
 import org.tensorflow.lite.examples.classification.Presentation.HealthCenterActivity.LoadingActivity;
 import org.tensorflow.lite.examples.classification.Presentation.MainActivity.MainActivity;
