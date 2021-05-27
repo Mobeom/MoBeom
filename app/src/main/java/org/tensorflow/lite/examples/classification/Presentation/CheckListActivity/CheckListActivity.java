@@ -20,6 +20,7 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.RadioButton;
 
 import org.tensorflow.lite.examples.classification.Presentation.HealthCenterActivity.LoadingActivity;
 import org.tensorflow.lite.examples.classification.Presentation.MainActivity.MainActivity;
@@ -132,21 +133,21 @@ public class CheckListActivity extends AppCompatActivity {
                 what_vaccined = "";
                 first_date_vaccined = "";
                 second_date_vaccined = "";
-                binding.vaccine2.setVisibility(View.GONE);
-                binding.vaccine2Answer.setVisibility(View.GONE);
-                binding.vaccine3.setVisibility(View.GONE);
-                binding.first.setVisibility(View.GONE);
-                binding.second.setVisibility(View.GONE);
+                for(int i = 0; i < binding.vaccine2Answer.getChildCount(); i++) {
+                    ((RadioButton) binding.vaccine2Answer.getChildAt(i)).setEnabled(false);
+                }
+                binding.first.setEnabled(false);
+                binding.second.setEnabled(false);
             }
         });
         binding.vaccineYes.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 vaccined = true;
-                binding.vaccine2.setVisibility(View.VISIBLE);
-                binding.vaccine2Answer.setVisibility(View.VISIBLE);
-                binding.vaccine3.setVisibility(View.VISIBLE);
-                binding.first.setVisibility(View.VISIBLE);
-                binding.second.setVisibility(View.VISIBLE);
+                    for(int i = 0; i < binding.vaccine2Answer.getChildCount(); i++) {
+                        ((RadioButton) binding.vaccine2Answer.getChildAt(i)).setEnabled(true);
+                    }
+                    binding.first.setEnabled(true);
+                    binding.second.setEnabled(true);
             }
         });
     }
