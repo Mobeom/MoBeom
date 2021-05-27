@@ -2,7 +2,7 @@ package org.tensorflow.lite.examples.classification.Presentation.HealthCenterAct
 
 public class SecretValues {
 
-    private String Url = "https://af8fa6f1ff35.ngrok.io/";
+    private String Url = "https://f51f4ef11c72.ngrok.io/";
 
     public String getUrl() {
         return Url;

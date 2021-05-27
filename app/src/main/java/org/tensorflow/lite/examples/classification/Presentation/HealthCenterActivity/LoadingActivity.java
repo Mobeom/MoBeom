@@ -3,6 +3,7 @@ package org.tensorflow.lite.examples.classification.Presentation.HealthCenterAct
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -56,8 +57,11 @@ public class LoadingActivity extends AppCompatActivity {
                     Intent intent = new Intent(LoadingActivity.this, HealthCenterActivity.class);
                     intent.putExtra("clinics", (Serializable)resource);
                     startActivity(intent);
+                    finish();
                 } else {
+                    Toast.makeText(getApplicationContext(), "서버 오류 :: 뒤로 가기를 눌러주세요", Toast.LENGTH_LONG).show();
                     System.out.println(response.errorBody());
+                    finish();
                 }
             }
 
