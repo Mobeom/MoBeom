@@ -16,6 +16,7 @@ import org.tensorflow.lite.examples.classification.Data.API.CoronaAPI;
 import org.tensorflow.lite.examples.classification.Data.API.CoronaStatus;
 import org.tensorflow.lite.examples.classification.Presentation.CheckListActivity.CheckListActivity;
 import org.tensorflow.lite.examples.classification.Presentation.HealthCenterActivity.LoadingActivity;
+import org.tensorflow.lite.examples.classification.Presentation.HiddenActivity.HiddenActivity;
 import org.tensorflow.lite.examples.classification.Presentation.MaskDetectionActivity.ClassifierActivity;
 import org.tensorflow.lite.examples.classification.R;
 import org.tensorflow.lite.examples.classification.databinding.ActivityMainBinding;
@@ -30,6 +31,7 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
+    private int maskClickCnt = 0;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -38,22 +40,11 @@ public class MainActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         setContentView(binding.getRoot());
 
-        binding.buttonMaskDetector.setOnClickListener(view -> {
-            Intent intent = new Intent(getApplicationContext(), ClassifierActivity.class);
-            startActivity(intent);
-        });
-
-        binding.buttonSelfCheck.setOnClickListener(view -> {
-            Intent intent = new Intent(getApplicationContext(), CheckListActivity.class);
-            startActivity(intent);
-        });
-
-        binding.buttonHealthCenter.setOnClickListener(view -> {
-            Intent intent = new Intent(getApplicationContext(), LoadingActivity.class);
-            if (Build.VERSION.SDK_INT >= 23 && ContextCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(MainActivity.this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 0); }
-            else startActivity(intent);
-        });
+        // 각 버튼 클릭 리스너들
+        maskDetectorClickListener();
+        selfCheckClickListener();
+        healthCenterClickListener();
+        maskClickListener();
 
         new Thread(() -> {
             try {
@@ -75,6 +66,40 @@ public class MainActivity extends AppCompatActivity {
         }).start();
     }
 
+    private void maskDetectorClickListener() {
+        binding.buttonMaskDetector.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), ClassifierActivity.class);
+            startActivity(intent);
+        });
+    }
+
+    private void selfCheckClickListener() {
+        binding.buttonSelfCheck.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), CheckListActivity.class);
+            startActivity(intent);
+        });
+    }
+
+    private void healthCenterClickListener() {
+        binding.buttonHealthCenter.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), LoadingActivity.class);
+            if (Build.VERSION.SDK_INT >= 23 && ContextCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(MainActivity.this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 0);
+            } else startActivity(intent);
+        });
+    }
+
+    private void maskClickListener() {
+        binding.ivMask.setOnClickListener(view -> {
+            maskClickCnt++;
+            if (maskClickCnt >= 5) {
+                maskClickCnt = 0;
+                Intent intent = new Intent(getApplicationContext(), HiddenActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
     /**
      * API 형식에 맞춰서 date 값을 반환해주는 함수입니다.
      */
@@ -92,7 +117,6 @@ public class MainActivity extends AppCompatActivity {
         String yesterdayInFormat = yesterdayYear + yesterdayMonth + yesterdayDay;
         return new CustomDate(todayInFormat, yesterdayInFormat);
     }
-
 
     private static class CustomDate {
         private final String todayDate;
