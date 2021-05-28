@@ -32,9 +32,8 @@ public class LoadingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loading);
-
-        SecretValues secretValues = new SecretValues();
-        String BASE_URL = secretValues.getUrl();
+        
+        String BASE_URL = getResources().getString(R.string.BASE_URL);
 
         Gson gson = new GsonBuilder()
                 .setLenient()
@@ -59,7 +58,8 @@ public class LoadingActivity extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 } else {
-                    Toast.makeText(getApplicationContext(), "서버 오류 :: 뒤로 가기를 눌러주세요", Toast.LENGTH_LONG).show();
+
+                    Toast.makeText(getApplicationContext(), "서버에 접속할 수 없습니다 \n서버 관리자에게 문의하시길 바랍니다", Toast.LENGTH_LONG).show();
                     System.out.println(response.errorBody());
                     finish();
                 }
