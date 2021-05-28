@@ -43,16 +43,15 @@
             android:focusable="true"
             android:background="@drawable/shape_hidden_item"
             android:foreground="@drawable/ripple_hidden_item"
-            android:padding="10dp"
+            android:padding="5dp"
             app:layout_constraintBottom_toTopOf="@id/cl_seongjin"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/iv_mobeom_icon">
 
             <ImageView
                 android:id="@+id/iv_dongwoo"
-                android:layout_width="85dp"
-                android:layout_height="100dp"
-
+                android:layout_width="60dp"
+                android:layout_height="85dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/dongwoo"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -95,15 +94,15 @@
             android:focusable="true"
             android:background="@drawable/shape_hidden_item"
             android:foreground="@drawable/ripple_hidden_item"
-            android:padding="10dp"
+            android:padding="5dp"
             app:layout_constraintBottom_toTopOf="@id/cl_gyubbin"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cl_dongwoo">
 
             <ImageView
                 android:id="@+id/iv_seongjin"
-                android:layout_width="85dp"
-                android:layout_height="100dp"
+                android:layout_width="60dp"
+                android:layout_height="85dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/seongjin"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -147,15 +146,15 @@
             android:focusable="true"
             android:background="@drawable/shape_hidden_item"
             android:foreground="@drawable/ripple_hidden_item"
-            android:padding="10dp"
+            android:padding="5dp"
             app:layout_constraintBottom_toTopOf="@id/cl_wonjoong"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cl_seongjin">
 
             <ImageView
                 android:id="@+id/iv_gyubbin"
-                android:layout_width="85dp"
-                android:layout_height="100dp"
+                android:layout_width="60dp"
+                android:layout_height="85dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/gyubbin"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -198,15 +197,15 @@
             android:clickable="true"
             android:focusable="true"
             android:foreground="@drawable/ripple_hidden_item"
-            android:padding="10dp"
+            android:padding="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cl_gyubbin">
 
             <ImageView
                 android:id="@+id/iv_wonjoong"
-                android:layout_width="85dp"
-                android:layout_height="100dp"
+                android:layout_width="60dp"
+                android:layout_height="85dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/wonjoong"
                 app:layout_constraintBottom_toBottomOf="parent"
