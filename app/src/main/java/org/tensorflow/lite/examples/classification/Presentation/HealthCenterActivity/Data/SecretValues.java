@@ -7,4 +7,5 @@ public class SecretValues {
     public String getUrl() {
         return Url;
     }
+
 }
