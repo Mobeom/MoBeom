@@ -16,6 +16,5 @@ public class HiddenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_hidden);
         setContentView(binding.getRoot());
-
     }
 }
