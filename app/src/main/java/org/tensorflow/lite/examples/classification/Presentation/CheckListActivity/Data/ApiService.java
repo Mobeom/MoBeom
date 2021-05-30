@@ -12,6 +12,7 @@ public interface ApiService{
     @GET("userInfos/{id}")
     Call<UserInfoJson> getUserInfo(@Path("id") String id);
 
+
     @POST("userInfos")
     Call<UserInfoJson> postUserInfo(@Body UserInfoJson userInfo);
 
