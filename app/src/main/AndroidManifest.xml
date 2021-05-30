@@ -24,6 +24,7 @@
             android:screenOrientation="portrait" />
         <activity android:name=".Presentation.MainActivity.MainActivity" />
         <activity android:name=".Presentation.CheckListActivity.CheckListActivity" />
+        <activity android:name=".Presentation.MyInfoActivity.MyInfoActivity" />
         <activity android:name=".Presentation.HealthCenterActivity.LoadingActivity" />
         <activity android:name=".Presentation.HealthCenterActivity.HealthCenterActivity" />
         <activity android:name=".Presentation.HiddenActivity.HiddenActivity"/>

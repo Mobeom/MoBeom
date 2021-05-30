@@ -3,6 +3,7 @@ package org.tensorflow.lite.examples.classification.Presentation.HealthCenterAct
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +11,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import org.tensorflow.lite.examples.classification.Presentation.HealthCenterActivity.Data.ApiService;
+import org.tensorflow.lite.examples.classification.Presentation.HealthCenterActivity.Data.SecretValues;
 import org.tensorflow.lite.examples.classification.Presentation.HealthCenterActivity.Data.SelectiveClinicJson;
 import org.tensorflow.lite.examples.classification.R;
 
@@ -23,15 +25,16 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LoadingActivity extends AppCompatActivity {
-
     public List<SelectiveClinicJson> arrayList;
     public List<SelectiveClinicJson> resource;
-    static final String BASE_URL = String.valueOf(R.string.BASE_URL);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loading);
+
+        SecretValues secretValues = new SecretValues();
+        String BASE_URL = secretValues.getUrl();
 
         Gson gson = new GsonBuilder()
                 .setLenient()
@@ -54,8 +57,11 @@ public class LoadingActivity extends AppCompatActivity {
                     Intent intent = new Intent(LoadingActivity.this, HealthCenterActivity.class);
                     intent.putExtra("clinics", (Serializable)resource);
                     startActivity(intent);
+                    finish();
                 } else {
+                    Toast.makeText(getApplicationContext(), "서버 오류 :: 뒤로 가기를 눌러주세요", Toast.LENGTH_LONG).show();
                     System.out.println(response.errorBody());
+                    finish();
                 }
             }
 
