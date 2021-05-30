@@ -23,7 +23,8 @@
         android:label="@string/activity_name_classification"
         android:roundIcon="@drawable/ic_launcher"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
         <activity
             android:name=".Presentation.MaskDetectionActivity.ClassifierActivity"
             android:label="@string/activity_name_classification"
@@ -33,6 +34,7 @@
         <activity android:name=".Presentation.MyInfoActivity.MyInfoActivity" />
         <activity android:name=".Presentation.HealthCenterActivity.LoadingActivity" />
         <activity android:name=".Presentation.HealthCenterActivity.HealthCenterActivity" />
+        <activity android:name=".Presentation.HiddenActivity.HiddenActivity"/>
         <activity android:name=".Presentation.SplashActivity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

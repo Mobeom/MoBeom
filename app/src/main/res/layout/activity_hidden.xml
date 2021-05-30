@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/beige">
+
+        <TextView
+            android:id="@+id/tv_mobeom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Team Mobeom"
+            android:textColor="@color/black"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/iv_mobeom_icon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_mobeom_icon"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/icon_no_background"
+            app:layout_constraintBottom_toTopOf="@id/cl_dongwoo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_mobeom" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_dongwoo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@drawable/shape_hidden_item"
+            android:foreground="@drawable/ripple_hidden_item"
+            android:padding="5dp"
+            app:layout_constraintBottom_toTopOf="@id/cl_seongjin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_mobeom_icon">
+
+            <ImageView
+                android:id="@+id/iv_dongwoo"
+                android:layout_width="60dp"
+                android:layout_height="85dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/dongwoo"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_dongwoo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="이동우"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/tv_dongwoo_detail"
+                app:layout_constraintStart_toEndOf="@id/iv_dongwoo"
+                app:layout_constraintTop_toTopOf="@id/iv_dongwoo" />
+
+            <TextView
+                android:id="@+id/tv_dongwoo_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="서버는 내가 책임진다!"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@id/iv_dongwoo"
+                app:layout_constraintStart_toEndOf="@id/iv_dongwoo"
+                app:layout_constraintTop_toBottomOf="@id/tv_dongwoo" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_seongjin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@drawable/shape_hidden_item"
+            android:foreground="@drawable/ripple_hidden_item"
+            android:padding="5dp"
+            app:layout_constraintBottom_toTopOf="@id/cl_gyubbin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_dongwoo">
+
+            <ImageView
+                android:id="@+id/iv_seongjin"
+                android:layout_width="60dp"
+                android:layout_height="85dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/seongjin"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_seongjin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="박성진"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/tv_seongjin_detail"
+                app:layout_constraintStart_toEndOf="@id/iv_seongjin"
+                app:layout_constraintTop_toTopOf="@id/iv_seongjin" />
+
+            <TextView
+                android:id="@+id/tv_seongjin_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="삐빅 인공지능입니다."
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@id/iv_seongjin"
+                app:layout_constraintStart_toEndOf="@id/iv_seongjin"
+                app:layout_constraintTop_toBottomOf="@id/tv_seongjin" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_gyubbin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@drawable/shape_hidden_item"
+            android:foreground="@drawable/ripple_hidden_item"
+            android:padding="5dp"
+            app:layout_constraintBottom_toTopOf="@id/cl_wonjoong"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_seongjin">
+
+            <ImageView
+                android:id="@+id/iv_gyubbin"
+                android:layout_width="60dp"
+                android:layout_height="85dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/gyubbin"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_gyubbin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="김규빈"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/tv_gyubbin_detail"
+                app:layout_constraintStart_toEndOf="@id/iv_gyubbin"
+                app:layout_constraintTop_toTopOf="@id/iv_gyubbin" />
+
+            <TextView
+                android:id="@+id/tv_gyubbin_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="백신 맞으셨나요?"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@id/iv_gyubbin"
+                app:layout_constraintStart_toEndOf="@id/iv_gyubbin"
+                app:layout_constraintTop_toBottomOf="@id/tv_gyubbin" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_wonjoong"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:background="@drawable/shape_hidden_item"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="@drawable/ripple_hidden_item"
+            android:padding="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_gyubbin">
+
+            <ImageView
+                android:id="@+id/iv_wonjoong"
+                android:layout_width="60dp"
+                android:layout_height="85dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/wonjoong"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_wonjoong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="이원중"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/tv_wonjoong_detail"
+                app:layout_constraintStart_toEndOf="@id/iv_wonjoong"
+                app:layout_constraintTop_toTopOf="@id/iv_wonjoong" />
+
+            <TextView
+                android:id="@+id/tv_wonjoong_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="안드로이드 없이 못살아~"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@id/iv_wonjoong"
+                app:layout_constraintStart_toEndOf="@id/iv_wonjoong"
+                app:layout_constraintTop_toBottomOf="@id/tv_wonjoong" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

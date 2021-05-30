@@ -125,6 +125,9 @@ public class CoronaAPI {
         stat.setDecideCnt(Integer.toString(dec)); // 확진자 현황 추가
         stat.setClrCnt(Integer.toString(clear));
 
+        Log.e("eee", todayDec + " and " + yesterdayDec);
+        Log.e("dec and clear", dec + " and " + clear);
+
         buffer.append("파싱 종료 단계 \n");
         System.out.println(buffer.toString());
         return stat;
