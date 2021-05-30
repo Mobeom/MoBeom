@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -58,6 +59,15 @@ public class MainActivity extends AppCompatActivity {
                     binding.tvDeathCnt.setText(cs.getDeathCnt() + "명");
                     binding.tvDecideStatusNum.setText(cs.getDecideCnt() + "명");
                     binding.tvClrStatusNum.setText(cs.getClrCnt() + "명");
+
+                    binding.pgbarClrStatus.setVisibility(View.GONE);
+                    binding.tvClrStatusNum.setVisibility(View.VISIBLE);
+
+                    binding.pgbarDecideStatus.setVisibility(View.GONE);
+                    binding.tvDecideStatusNum.setVisibility(View.VISIBLE);
+
+                    binding.pgbarDeathCnt.setVisibility(View.GONE);
+                    binding.tvDeathCnt.setVisibility(View.VISIBLE);
                 });
             } catch (IOException e) {
                 Log.e("IOException", e.toString());
