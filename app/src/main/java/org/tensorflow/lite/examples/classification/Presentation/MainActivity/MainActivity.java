@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -68,8 +69,9 @@ public class MainActivity extends AppCompatActivity {
                     binding.tvClrStatusNum.setText(cs.getClrCnt() + "명");
                 });
             } catch (IOException e) {
-                System.out.println(e.toString());
+                Log.e("IOException", e.toString());
             } catch (XmlPullParserException e) {
+                Log.e("XmlPullParserException", e.toString());
                 e.printStackTrace();
             }
         }).start();
