@@ -10,6 +10,7 @@
         android:gravity="center_vertical"
         android:orientation="vertical"
         android:background="@drawable/style"
+        android:paddingLeft="10dp"
         >
 
 
@@ -19,7 +20,7 @@
             android:layout_height="wrap_content"
             android:textSize="20dp"
             android:textStyle="bold"
-            android:textColor="#4CAF50"
+            android:textColor="#FFFFFF"
             android:text="보건소 이름" />
 
 
@@ -27,14 +28,14 @@
             android:id="@+id/clinicAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#4CAF50"
+            android:textColor="#FFFFFF"
             android:text="보건소 주소" />
 
         <TextView
             android:id="@+id/clinicPhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#4CAF50"
+            android:textColor="#FFFFFF"
             android:text="010-0000-0000" />
 
 
