@@ -74,7 +74,7 @@ public class CheckListActivity extends AppCompatActivity {
                 warning.setTitle("코로나가 의심됩니다");
                 warning.setMessage("인근 보건소 위치를 알려드릴까요?");
                 warning.setIcon(R.drawable.ic_masks_24);
-                warning.setPositiveButton("보러갈래", new DialogInterface.OnClickListener() {
+                warning.setPositiveButton("네", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Intent intent = new Intent(getApplicationContext(), LoadingActivity.class);
@@ -83,7 +83,7 @@ public class CheckListActivity extends AppCompatActivity {
                         else  startActivity(intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK));
                     }
                 });
-                warning.setNegativeButton("결과나 보여줘", new DialogInterface.OnClickListener() {
+                warning.setNegativeButton("결과보기", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Intent intent = new Intent(getApplicationContext(), MyInfoActivity.class);
@@ -105,10 +105,10 @@ public class CheckListActivity extends AppCompatActivity {
                 else {
                     AlertDialog.Builder maybe_okay = new AlertDialog.Builder(CheckListActivity.this);
                     maybe_okay.setTitle("코로나가 의심되지 않습니다");
-                    maybe_okay.setMessage("그래도 방역에 노력해주세요.\n 결과를 보여드릴까요?");
+                    maybe_okay.setMessage("그래도 방역에 노력해주세요.\n결과를 보여드릴까요?");
                     maybe_okay.setIcon(R.drawable.ic_masks_24);
                     codiv19 = false;
-                    maybe_okay.setPositiveButton("넵", new DialogInterface.OnClickListener() {
+                    maybe_okay.setPositiveButton("네", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             Intent intent = new Intent(getApplicationContext(), MyInfoActivity.class);
