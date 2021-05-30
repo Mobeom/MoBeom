@@ -11,7 +11,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import org.tensorflow.lite.examples.classification.Presentation.HealthCenterActivity.Data.ApiService;
-import org.tensorflow.lite.examples.classification.Presentation.HealthCenterActivity.Data.SecretValues;
 import org.tensorflow.lite.examples.classification.Presentation.HealthCenterActivity.Data.SelectiveClinicJson;
 import org.tensorflow.lite.examples.classification.R;
 
@@ -32,7 +31,7 @@ public class LoadingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loading);
-        
+
         String BASE_URL = getResources().getString(R.string.BASE_URL);
 
         Gson gson = new GsonBuilder()

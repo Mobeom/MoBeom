@@ -12,6 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -20,9 +22,12 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import org.tensorflow.lite.examples.classification.Presentation.HealthCenterActivity.Data.RecyclerViewAdapther;
 import org.tensorflow.lite.examples.classification.Presentation.HealthCenterActivity.Data.SelectiveClinicJson;
 import org.tensorflow.lite.examples.classification.R;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 
@@ -34,16 +39,27 @@ public class HealthCenterActivity extends AppCompatActivity implements OnMapRead
     public GoogleMap gMap;
     public List<SelectiveClinicJson> clinics;
 
+    private RecyclerViewAdapther recyclerViewAdapther;
+    private RecyclerView recyclerView;
+    private LinearLayoutManager linearLayoutManager;
+
+    public String BASE_URL;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_health_center);
 
+        //인근 보건소 작업
         clinics = (List<SelectiveClinicJson>) getIntent().getSerializableExtra("clinics");
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.googleMap);
         mapFragment.getMapAsync(this);
         lm = (LocationManager) getSystemService(LOCATION_SERVICE);
-        //addMarker();
+
+        recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
+        linearLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(linearLayoutManager);
+
     }
 
     protected void addMarker() {
@@ -56,13 +72,6 @@ public class HealthCenterActivity extends AppCompatActivity implements OnMapRead
 
             gMap.addMarker(markerOptions);
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                // TODO: Consider calling
-                //    ActivityCompat#requestPermissions
-                // here to request the missing permissions, and then overriding
-                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                //                                          int[] grantResults)
-                // to handle the case where the user grants the permission. See the documentation
-                // for ActivityCompat#requestPermissions for more details.
                 return;
             }
             gMap.setMyLocationEnabled(true);
@@ -71,13 +80,6 @@ public class HealthCenterActivity extends AppCompatActivity implements OnMapRead
 
     protected void GetCurrentLocation() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
             return;
         }
         Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
@@ -109,15 +111,31 @@ public class HealthCenterActivity extends AppCompatActivity implements OnMapRead
         }
     };
 
-
+    class SortbyDistance implements Comparator<SelectiveClinicJson>
+    {
+        @Override
+        public int compare(SelectiveClinicJson t1, SelectiveClinicJson t2) {
+            double compare1 = Math.pow(t1.getX()-latitude, 2) + Math.pow(t1.getY()-longitude, 2);
+            double compare2 = Math.pow(t2.getX()-latitude, 2) + Math.pow(t2.getY()-longitude, 2);
+            return (int)((compare1-compare2)*100);
+        }
+    }
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
         gMap = googleMap;
         GetCurrentLocation();
         addMarker();
         LatLng location = new LatLng(latitude, longitude);
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 16)); // 가까이 보고 싶으면 숫자를 올린다
-        //googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(location, 16)); // 가까이 보고 싶으면 숫자를 올린다
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 13)); // 가까이 보고 싶으면 숫자를 올린다
+
+
+        Collections.sort(clinics, new SortbyDistance());
+
+        List<SelectiveClinicJson> priority = clinics.subList(0,4);
+
+        recyclerViewAdapther = new RecyclerViewAdapther(priority);
+        recyclerView.setAdapter(recyclerViewAdapther);
+
     }
 }
 
