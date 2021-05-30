@@ -24,6 +24,12 @@ public class SelectiveClinicJson implements Serializable {
     @SerializedName("y")
     public Double y;
 
+    public String getName() {return name;}
+
+    public String getAddress() {return address;}
+
+    public String getPhone() {return phone;}
+
     public double getX(){
         return x;
     }
