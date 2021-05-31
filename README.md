@@ -53,12 +53,15 @@
 
 ### Nearby Medical Center
 <p align="center">
-<img src="https://i.postimg.cc/X78vbTLc/Kakao-Talk-20210530-185138622.gif)](https://postimg.cc/w71z54S7" width="250">
+<img src="https://user-images.githubusercontent.com/57510192/120143844-e1046800-c21b-11eb-91fa-fc6aa5d49711.gif" width="250">
 </p>
 
 - Node.js, SQL Server
 - Retrofit2
 <br>
+
+### Hidden Activity
+숨겨진 Activity가 있습니다!
 
 ## 기여자
 <table align="center">
