@@ -15,8 +15,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class CoronaAPI {
-    public static CoronaStatus getStatus(String startDate, String endDate, Context context) throws IOException, XmlPullParserException {
+public class CoronaAPI {              // @Copyright for 이원중
+    public static CoronaStatus getStatus(String startDate, String endDate, Context context) throws IOException, XmlPullParserException {              // @Copyright for 이원중
         // 인코딩된 Service Key <- 이거 사용
         String serviceKeyEncoded = context.getString(R.string.corona_service_key_encoded);
         // 디코딩된 Service Key
@@ -46,7 +46,7 @@ public class CoronaAPI {
         return xmlParsing(url);
     }
 
-    public static CoronaStatus xmlParsing(URL url) throws IOException, XmlPullParserException {
+    public static CoronaStatus xmlParsing(URL url) throws IOException, XmlPullParserException {              // @Copyright for 이원중
 
         CoronaStatus stat = new CoronaStatus("-1", "-1", "-1");
 
