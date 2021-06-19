@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment;
 
 import org.tensorflow.lite.examples.classification.R;
 
-public class FirstFragment extends Fragment {
+public class FirstFragment extends Fragment {              // @Copyright for 이원중
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

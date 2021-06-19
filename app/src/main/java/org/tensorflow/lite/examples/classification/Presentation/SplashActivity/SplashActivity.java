@@ -11,12 +11,12 @@ import androidx.viewpager2.widget.ViewPager2;
 import org.tensorflow.lite.examples.classification.Presentation.MainActivity.MainActivity;
 import org.tensorflow.lite.examples.classification.R;
 
-public class SplashActivity extends AppCompatActivity {
+public class SplashActivity extends AppCompatActivity {              // @Copyright for 이원중
 
     private ViewPager2 mPager;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {              // @Copyright for 이원중
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
@@ -35,7 +35,7 @@ public class SplashActivity extends AppCompatActivity {
         mPager.setOffscreenPageLimit(3);
         mPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {              // @Copyright for 이원중
                 super.onPageScrolled(position, positionOffset, positionOffsetPixels);
                 if (positionOffsetPixels == 0) {
                     mPager.setCurrentItem(position);
@@ -43,7 +43,7 @@ public class SplashActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onPageSelected(int position) {
+            public void onPageSelected(int position) {              // @Copyright for 이원중
                 super.onPageSelected(position);
 
             }

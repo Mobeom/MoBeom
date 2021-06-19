@@ -30,14 +30,14 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {              // @Copyright for 이원중
 
     private ActivityMainBinding binding;
     private int maskClickCnt = 0;
 
     @SuppressLint("SetTextI18n")
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {              // @Copyright for 이원중
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         setContentView(binding.getRoot());
@@ -78,21 +78,21 @@ public class MainActivity extends AppCompatActivity {
         }).start();
     }
 
-    private void maskDetectorClickListener() {
+    private void maskDetectorClickListener() {              // @Copyright for 이원중
         binding.buttonMaskDetector.setOnClickListener(view -> {
             Intent intent = new Intent(getApplicationContext(), ClassifierActivity.class);
             startActivity(intent);
         });
     }
 
-    private void selfCheckClickListener() {
+    private void selfCheckClickListener() {              // @Copyright for 이원중
         binding.buttonSelfCheck.setOnClickListener(view -> {
             Intent intent = new Intent(getApplicationContext(), CheckListActivity.class);
             startActivity(intent);
         });
     }
 
-    private void healthCenterClickListener() {
+    private void healthCenterClickListener() {              // @Copyright for 이원중
         binding.buttonHealthCenter.setOnClickListener(view -> {
             Intent intent = new Intent(getApplicationContext(), LoadingActivity.class);
             if (Build.VERSION.SDK_INT >= 23 && ContextCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void maskClickListener() {
+    private void maskClickListener() {              // @Copyright for 이원중
         binding.ivMask.setOnClickListener(view -> {
             maskClickCnt++;
             if (maskClickCnt >= 5) {
@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * API 형식에 맞춰서 date 값을 반환해주는 함수입니다.
      */
-    private CustomDate getDate(Date currentTime, Date yesterdayTime) {
+    private CustomDate getDate(Date currentTime, Date yesterdayTime) {              // @Copyright for 이원중
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd", Locale.getDefault());
         SimpleDateFormat monthFormat = new SimpleDateFormat("MM", Locale.getDefault());
         SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy", Locale.getDefault());
@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
         return new CustomDate(todayInFormat, yesterdayInFormat);
     }
 
-    private static class CustomDate {
+    private static class CustomDate {              // @Copyright for 이원중
         private final String todayDate;
         private final String yesterdayDate;
 

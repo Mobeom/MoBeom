@@ -11,10 +11,10 @@ import androidx.databinding.DataBindingUtil;
 import org.tensorflow.lite.examples.classification.R;
 import org.tensorflow.lite.examples.classification.databinding.ActivityHiddenBinding;
 
-public class HiddenActivity extends AppCompatActivity {
+public class HiddenActivity extends AppCompatActivity {              // @Copyright for 이원중
     private ActivityHiddenBinding binding;
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {              // @Copyright for 이원중
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_hidden);
         setContentView(binding.getRoot());
