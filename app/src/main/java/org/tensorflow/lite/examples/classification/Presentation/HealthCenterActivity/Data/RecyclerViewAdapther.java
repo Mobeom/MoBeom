@@ -12,7 +12,7 @@ import org.tensorflow.lite.examples.classification.R;
 
 import java.util.List;
 
-public class RecyclerViewAdapther extends RecyclerView.Adapter<RecyclerViewAdapther.CustomViewHolder> {
+public class RecyclerViewAdapther extends RecyclerView.Adapter<RecyclerViewAdapther.CustomViewHolder> {     //@copyright for 이동우
 
     private List<SelectiveClinicJson> list;
 
@@ -22,7 +22,7 @@ public class RecyclerViewAdapther extends RecyclerView.Adapter<RecyclerViewAdapt
 
     @NonNull
     @Override
-    public RecyclerViewAdapther.CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RecyclerViewAdapther.CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {      //@copyright for 이동우
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list,parent, false);
         CustomViewHolder customViewHolder = new CustomViewHolder(view);
@@ -31,7 +31,7 @@ public class RecyclerViewAdapther extends RecyclerView.Adapter<RecyclerViewAdapt
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerViewAdapther.CustomViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerViewAdapther.CustomViewHolder holder, int position) {     //@copyright for 이동우
         holder.clinicName.setText(list.get(position).getName());
         holder.clinicAddress.setText(list.get(position).getAddress());
         holder.clinicPhone.setText(list.get(position).getPhone());
@@ -42,15 +42,15 @@ public class RecyclerViewAdapther extends RecyclerView.Adapter<RecyclerViewAdapt
     @Override
     public int getItemCount() {
         return (null != list ? list.size() : 0);
-    }
+    }       //@copyright for 이동우
 
-    public class CustomViewHolder extends RecyclerView.ViewHolder {
+    public class CustomViewHolder extends RecyclerView.ViewHolder {     //@copyright for 이동우
 
         protected TextView clinicName;
         protected TextView clinicAddress;
         protected TextView clinicPhone;
 
-        public CustomViewHolder(@NonNull View itemView) {
+        public CustomViewHolder(@NonNull View itemView) {       //@copyright for 이동우
             super(itemView);
             this.clinicName = (TextView) itemView.findViewById(R.id.clinicName);
             this.clinicAddress = (TextView) itemView.findViewById(R.id.clinicAddress);

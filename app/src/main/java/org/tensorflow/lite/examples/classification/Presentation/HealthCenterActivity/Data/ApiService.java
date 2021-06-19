@@ -7,7 +7,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 
-public interface ApiService{
+public interface ApiService{    //@copyright for 이동우
 
     @GET("clinics/")
     Call<List<SelectiveClinicJson>> getSelectiveClinics();

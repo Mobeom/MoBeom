@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class UserInfoJson implements Serializable{
+public class UserInfoJson implements Serializable{      //@copyright for 김규빈
     @SerializedName("isInfected")
     public boolean isInfected;
 
