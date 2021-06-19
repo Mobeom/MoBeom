@@ -1,5 +1,72 @@
 # MoBeom
-충북대학교 오픈소스 전문 프로젝트 **모범시민**
+<p align="center">
+    <img src="https://img.shields.io/badge/Java-11.0.8-orange?logo=java"/>
+<img alt="api" src="https://img.shields.io/badge/API-23%2B-green?logo=android"/>
+<p align="center">충북대학교 오픈소스 전문 프로젝트 <b>모범시민</b>
+<p align="center">마스크를 잘 쓰는 모범 시민이 됩시다.</p>
+</p>
+
+## Stack & Libraries
+- Minimum SDK level 23
+- Realtime Image Recognition with tensorflow
+- Java based
+- Motion Layout
+- Thread Handling
+- Data binding
+- Node.js, Sql
+- Retrofit
+
+## Activities
+### Splash Activity
+<p align="center">
+<img src="https://i.postimg.cc/MZ1TscjL/Kakao-Talk-20210530-185122861.gif" width="250">
+</p>
+
+- View Pager
+- Motion Layout
+<br>
+
+### Main Activity
+<p align="center">
+<img src="https://user-images.githubusercontent.com/57510192/120142080-9cc39880-c218-11eb-8978-523a8061e7bc.jpg" width="250">
+</p>
+
+- 공공 데이터 포털 API 통신
+- XML Parsing
+<br>
+
+### Mask Detector
+<p align="center">
+<img src="https://user-images.githubusercontent.com/57510192/121612111-b83e6700-ca94-11eb-9938-8f155243cf8a.PNG" width="250">
+</p>
+
+- Tensorflow Lite
+- Machine Learning Model
+<br>
+
+### Self Check list
+<p align="center">
+<img src="https://i.postimg.cc/X78vbTLc/Kakao-Talk-20210530-185138622.gif)](https://postimg.cc/w71z54S7" width="250">
+</p>
+
+ - RadioGroup
+ - CalendarView
+ - Dialog
+<br>
+
+
+### Nearby Medical Center
+<p align="center">
+<img src="https://user-images.githubusercontent.com/57510192/120143844-e1046800-c21b-11eb-91fa-fc6aa5d49711.gif" width="250">
+</p>
+
+- Node.js, SQL Server
+- Retrofit2
+- [SERVER API](https://github.com/Mobeom/Mobeom_Server) 
+<br>
+
+### Hidden Activity
+숨겨진 Activity가 있습니다!
 
 ## 기여자
 <table align="center">
