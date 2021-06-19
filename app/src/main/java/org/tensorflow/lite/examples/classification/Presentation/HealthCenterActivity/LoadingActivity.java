@@ -23,12 +23,12 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class LoadingActivity extends AppCompatActivity {
+public class LoadingActivity extends AppCompatActivity {        //@copyright for 이동우
     public List<SelectiveClinicJson> arrayList;
     public List<SelectiveClinicJson> resource;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {        //@copyright for 이동우
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loading);
 
@@ -48,7 +48,7 @@ public class LoadingActivity extends AppCompatActivity {
         Call<List<SelectiveClinicJson>> call = apiService.getSelectiveClinics();
         call.enqueue(new Callback<List<SelectiveClinicJson>>() {
             @Override
-            public void onResponse(Call<List<SelectiveClinicJson>> call, Response<List<SelectiveClinicJson>> response) {
+            public void onResponse(Call<List<SelectiveClinicJson>> call, Response<List<SelectiveClinicJson>> response) {        //@copyright for 이동우
                 if (response.isSuccessful()) {
                     Log.e("TAG", "Server response code :: " + response.code() + " ");
                     resource = response.body();
@@ -65,7 +65,7 @@ public class LoadingActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<List<SelectiveClinicJson>> call, Throwable t) {
+            public void onFailure(Call<List<SelectiveClinicJson>> call, Throwable t) {      //@copyright for 이동우
                 call.cancel();
                 t.printStackTrace();
             }

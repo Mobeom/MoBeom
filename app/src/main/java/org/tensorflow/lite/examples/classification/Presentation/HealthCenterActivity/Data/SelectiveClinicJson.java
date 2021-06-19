@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class SelectiveClinicJson implements Serializable {
+public class SelectiveClinicJson implements Serializable {      //@copyright for 이동우
 
     @SerializedName("name")
     public String name;

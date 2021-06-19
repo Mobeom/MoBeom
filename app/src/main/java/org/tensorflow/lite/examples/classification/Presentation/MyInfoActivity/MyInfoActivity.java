@@ -31,16 +31,16 @@ import org.tensorflow.lite.examples.classification.R;
 import org.tensorflow.lite.examples.classification.databinding.ActivityMyinfoBinding;
 
 
-public class MyInfoActivity extends AppCompatActivity {
+public class MyInfoActivity extends AppCompatActivity {     //@copyright for 김규빈
 
     private ActivityMyinfoBinding binding;
 
-    public MyInfoActivity() {
+    public MyInfoActivity() {       //@copyright for 김규빈
     }
 
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {      //@copyright for 김규빈
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_myinfo);
         setContentView(binding.getRoot());

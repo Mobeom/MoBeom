@@ -34,7 +34,7 @@ import org.tensorflow.lite.examples.classification.databinding.ActivityCheckList
 
 import java.util.Calendar;
 
-public class CheckListActivity extends AppCompatActivity {
+public class CheckListActivity extends AppCompatActivity {      //@copyright for 김규빈
 
     static public boolean codiv19 = false;
     static public boolean vaccined = false;
@@ -52,7 +52,7 @@ public class CheckListActivity extends AppCompatActivity {
 
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {      //@copyright for 김규빈
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_check_list);
         setContentView(binding.getRoot());
@@ -130,7 +130,7 @@ public class CheckListActivity extends AppCompatActivity {
                 else what_vaccined = "";
             }
         });
-        binding.vaccineNo.setOnClickListener(new View.OnClickListener() {
+        binding.vaccineNo.setOnClickListener(new View.OnClickListener() {       //@copyright for 김규빈
             public void onClick(View v) {
                 vaccined = false;
                 what_vaccined = "";
@@ -143,7 +143,7 @@ public class CheckListActivity extends AppCompatActivity {
                 binding.second.setEnabled(false);
             }
         });
-        binding.vaccineYes.setOnClickListener(new View.OnClickListener() {
+        binding.vaccineYes.setOnClickListener(new View.OnClickListener() {      //@copyright for 김규빈
             public void onClick(View v) {
                 vaccined = true;
                     for(int i = 0; i < binding.vaccine2Answer.getChildCount(); i++) {
@@ -154,7 +154,7 @@ public class CheckListActivity extends AppCompatActivity {
             }
         });
     }
-    public void InitializeListener1() {
+    public void InitializeListener1() {     //@copyright for 김규빈
         callbackMethod1 = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int day) {
@@ -163,7 +163,7 @@ public class CheckListActivity extends AppCompatActivity {
             }
         };
     }
-    public void InitializeListener2() {
+    public void InitializeListener2() {     //@copyright for 김규빈
         callbackMethod2 = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int day) {
@@ -172,11 +172,11 @@ public class CheckListActivity extends AppCompatActivity {
             }
         };
     }
-    public void OnClickHandler1(View view) {
+    public void OnClickHandler1(View view) {        //@copyright for 김규빈
         DatePickerDialog dialog1 = new DatePickerDialog(this, callbackMethod1, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH));
         dialog1.show();
     }
-    public void OnClickHandler2(View view) {
+    public void OnClickHandler2(View view) {        //@copyright for 김규빈
         DatePickerDialog dialog2 = new DatePickerDialog(this, callbackMethod2, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH));
         dialog2.show();
     }

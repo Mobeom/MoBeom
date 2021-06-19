@@ -31,7 +31,7 @@ import java.util.Comparator;
 import java.util.List;
 
 
-public class HealthCenterActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class HealthCenterActivity extends AppCompatActivity implements OnMapReadyCallback {     //@copyright for 이동우
 
     private double longitude;
     private double latitude;
@@ -43,10 +43,8 @@ public class HealthCenterActivity extends AppCompatActivity implements OnMapRead
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
 
-    public String BASE_URL;
-
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {      //@copyright for 이동우
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_health_center);
 
@@ -62,7 +60,7 @@ public class HealthCenterActivity extends AppCompatActivity implements OnMapRead
 
     }
 
-    protected void addMarker() {
+    protected void addMarker() {        //@copyright for 이동우
         for (SelectiveClinicJson clinic : clinics) {
             LatLng lo = new LatLng(clinic.x, clinic.y);
             MarkerOptions markerOptions = new MarkerOptions();
@@ -78,7 +76,7 @@ public class HealthCenterActivity extends AppCompatActivity implements OnMapRead
         }
     }
 
-    protected void GetCurrentLocation() {
+    protected void GetCurrentLocation() {       //@copyright for 이동우
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
@@ -94,7 +92,7 @@ public class HealthCenterActivity extends AppCompatActivity implements OnMapRead
         }
     }
 
-    final LocationListener gpsLocationListener = new LocationListener(){
+    final LocationListener gpsLocationListener = new LocationListener(){        //@copyright for 이동우
         @Override
         public void onLocationChanged(@NonNull Location location) {
             longitude = location.getLongitude();
@@ -111,7 +109,7 @@ public class HealthCenterActivity extends AppCompatActivity implements OnMapRead
         }
     };
 
-    class SortbyDistance implements Comparator<SelectiveClinicJson>
+    class SortbyDistance implements Comparator<SelectiveClinicJson>         //@copyright for 이동우
     {
         @Override
         public int compare(SelectiveClinicJson t1, SelectiveClinicJson t2) {
@@ -121,7 +119,7 @@ public class HealthCenterActivity extends AppCompatActivity implements OnMapRead
         }
     }
     @Override
-    public void onMapReady(@NonNull GoogleMap googleMap) {
+    public void onMapReady(@NonNull GoogleMap googleMap) {      //@copyright for 이동우
         gMap = googleMap;
         GetCurrentLocation();
         addMarker();

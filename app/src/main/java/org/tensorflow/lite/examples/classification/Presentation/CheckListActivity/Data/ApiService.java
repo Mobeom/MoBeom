@@ -7,7 +7,7 @@ import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 
-public interface ApiService{
+public interface ApiService{        //@copyright for 김규빈
 
     @GET("userInfos/{id}")
     Call<UserInfoJson> getUserInfo(@Path("id") String id);
