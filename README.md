@@ -36,6 +36,10 @@
 <br>
 
 ### Mask Detector
+<p align="center">
+<img src="https://user-images.githubusercontent.com/57510192/121612111-b83e6700-ca94-11eb-9938-8f155243cf8a.PNG" width="250">
+</p>
+
 - Tensorflow Lite
 - Machine Learning Model
 <br>
